@@ -18,7 +18,6 @@ use App\Http\Controllers\Api\ApiController;
 
 Route::namespace('Api')->group(function(){
     Route::get('/technicalities', [ApiController::class, 'getTechnicalities']);
-    Route::get('/technicalities/{category}', [ApiController::class, 'getTechnicalitiesByCategory']);
-    Route::get('/categories', [ApiController::class, 'getCategories']);
-    Route::get('/categories/{id}', [ApiController::class, 'getCategoriesByTechnicalityId']);
+    Route::get('/technicality/{id}', [ApiController::class, 'getTechnicality']);
+    Route::get('/technicalities/{categ}', [ApiController::class, 'getTechnicalitiesByCateg']);
 });
