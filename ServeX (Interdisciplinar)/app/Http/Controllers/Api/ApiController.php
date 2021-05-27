@@ -65,4 +65,8 @@ class ApiController extends Controller {
         return json_encode($json);
     }
 
+    public function getCategories() {
+        return json_encode(Category::all());
+    }
+
 }

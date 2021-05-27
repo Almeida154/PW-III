@@ -20,4 +20,5 @@ Route::namespace('Api')->group(function(){
     Route::get('/technicalities', [ApiController::class, 'getTechnicalities']);
     Route::get('/technicality/{id}', [ApiController::class, 'getTechnicality']);
     Route::get('/technicalities/{categ}', [ApiController::class, 'getTechnicalitiesByCateg']);
+    Route::get('/categories', [ApiController::class, 'getCategories']);
 });
