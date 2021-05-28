@@ -59,7 +59,7 @@ class ApiController extends Controller {
                 'id' => $technicality->id,
                 'technicality' => $technicality->technicality,
                 'description' => $technicality->description,
-                'categories' => $category->category
+                'categories' => [$category->category]
             ]);
         }
         return json_encode($json);
