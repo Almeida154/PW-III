@@ -2,13 +2,13 @@
 // Splash JS
 
 $(document).ready(() => {
-    // splash()
-    $('.container-splash').css('display', 'none')
-    $('.container-dash').css('display', 'inline')
-    $('.container-dash').addClass('anime-left')
-    setTimeout(() => {
-        $('.container-dash').addClass('anime-start')
-    }, 100)
+    splash()
+    // $('.container-splash').css('display', 'none')
+    // $('.container-dash').css('display', 'inline')
+    // $('.container-dash').addClass('anime-left')
+    // setTimeout(() => {
+    //     $('.container-dash').addClass('anime-start')
+    // }, 100)
     
 })
 
