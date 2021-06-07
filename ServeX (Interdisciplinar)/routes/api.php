@@ -21,4 +21,5 @@ Route::namespace('Api')->group(function(){
     Route::get('/technicality/{id}', [ApiController::class, 'getTechnicality']);
     Route::get('/technicalities/{categ}', [ApiController::class, 'getTechnicalitiesByCateg']);
     Route::get('/categories', [ApiController::class, 'getCategories']);
+    Route::post('/add', [ApiController::class, 'add']);
 });

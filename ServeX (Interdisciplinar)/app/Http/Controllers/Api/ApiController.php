@@ -69,4 +69,35 @@ class ApiController extends Controller {
         return json_encode(Category::all());
     }
 
+    public function add(Request $request) {
+        try {
+            $data = json_decode($request->getContent());
+            $registered = Category::where('category', '=', 'from-mobile')->first();
+
+            if($registered === null) {
+                $category = new Category();
+                $category->category = 'from-mobile';
+                $category->save();
+                $registered->category;
+            }
+
+            $technicality = new Technicality();
+            $technicality->technicality = $data->technicality;
+            $technicality->description = $data->description;
+            $technicality->save();
+
+            $technicality->categories()->sync($registered->id);
+
+            return response()->json([
+                'status' => 'sucess',
+                'data' => $data
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'error' => $th
+            ]);
+        }
+    }
+
 }
