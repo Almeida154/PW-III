@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/public/css/flickity.css">
     <link rel="stylesheet" href="/public/css/website.css">
     <title>TryKeep | Home</title>
 </head>
@@ -11,7 +13,7 @@
 
     <!-- Menu -->
 
-    <header id="header">
+    <header id="header" class="anime-top">
         <a href="/" id="logo">
             <img src="public/svg/prayingmantisicon.svg" alt="An praying mantis as a icon">
             <h3>Try<span>Keep</span></h3>
@@ -29,8 +31,107 @@
         </nav>
     </header>
 
+    <!-- Wallpaper -->
+
+    <section id="wallpaper">
+        <div id="welcome">
+            <div id="content" class="anime-left">
+                <h2>Looking for <span>organization</span>? Here your <span>money</span> matter</h2>
+                <p>Organize your money with us. Here you can have control 
+                of all your expenses. Furthermore, we are the best option
+                on the market.</p>
+                <button id="btn">Sign In</button>
+                <a>Sign Up</a>
+            </div>
+            <div id="icon" class="anime-left">
+                <img src="public/svg/icon.svg" alt="Svg Icon">
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave 01 -->
+
+    <div class="wave01"></div>
+
+    <!-- Main -->
+
+    <section id="main">
+
+        <!-- row -->
+
+        <div class="row-main">
+            <div class="content-container anime-top">
+                <h3>About us</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quas unde dolorum reiciendis voluptatem consequatur ullam, laborum illum autem cum rerum placeat aliquam odio repudiandae suscipit numquam, veritatis, aliquid inventore?</p>
+            </div>
+            <div class="icon-container anime-top">
+                <img src="public/svg/iconRow01.svg" alt="Svg Icon">
+            </div>
+        </div>
+
+        <!-- Wave 02 -->
+
+        <div class="wave02"></div>
+
+        <!-- row -->
+
+        <div class="row-main scnd">
+            <div class="icon-container anime-top">
+                <img src="public/svg/iconRow02.svg" alt="Svg Icon">
+            </div>
+            <div class="content-container right anime-top">
+                <h3>The TryKeep Project</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quas unde dolorum reiciendis voluptatem consequatur ullam, laborum illum autem cum rerum placeat aliquam odio repudiandae suscipit numquam, veritatis, aliquid inventore?</p>
+            </div>
+        </div>
+
+        <!-- Wave 03 -->
+
+        <div class="wave03"></div>
+
+        <div class="row-end">
+            <h3 class="anime-left">Our goal</h3>
+            <p class="anime-left">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quas unde dolorum reiciendis voluptatem consequatur ullam, laborum illum autem cum rerum placeat aliquam odio repudiandae suscipit numquam, veritatis, aliquid inventore?</p>
+        </div>
+
+    </section>
+
+    <!-- Slide -->
+
+    <section id="slide" data-flickity='{ "autoPlay": true }'>
+        <div class="slide-cell" style="background-image: url('public/svg/prayingmantisicon.svg');"></div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+        <div class="container-foo">
+            <div class="helper">
+                <h3 id="logo-anchor">Try<span>Keep</span></h3>
+                <div class="icons">
+                    <div class="icon-wrapper">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+
+                    <div class="icon-wrapper">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+
+                    <div class="icon-wrapper">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="credits">
+            <p>Developed by <a target="_blank" href="https://www.linkedin.com/in/david-almeida-3b267a172/">David Almeida</a></p>
+        </div>
+    </footer>
+
     <!-- Scripts -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="public/js/flickity.pkgd.js"></script>
     <script src="public/js/website.js"></script>
 
 </body>
