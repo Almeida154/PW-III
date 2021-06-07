@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/easydropdown.flat.css">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/contact.css">
+    <title>TryKeep | Contact</title>
+</head>
+<body>
+
+    <!-- Menu -->
+
+    <header id="header">
+        <a href="/" id="logo">
+            <img src="public/svg/prayingmantisicon.svg" alt="An praying mantis as a icon">
+            <h3>Try<span>Keep</span></h3>
+        </a>
+        <nav id="nav">
+            <button id="btn-mobile" aria-label="Open Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
+                <span id="hamburger"></span>
+            </button>
+            <ul id="menu" role="menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/signIn.html">Sign In</a></li>
+                <li><a href="/signUp.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="container">
+        <div id="platform">
+            <div id="form">
+                <h3>Contact Us</h3>
+                <p><span>&</span> tell us what you need!</p>
+                <form>
+                    <div id="form-container">
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Email">
+                        <select class="dropdown" name="type">
+                            <option class="label">Type</option>
+                            <option value="Complaint">Complaint</option>
+                            <option value="Suggestion">Suggestion</option>
+                            <option value="Problem">Problem</option>
+                        </select>
+                        <textarea placeholder="Your message"></textarea>
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+            <div id="icon">
+                <img src="public/svg/iconContact.svg" alt="Contact Icon">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="public/js/jquery.easydropdown.js"></script>
+    <script src="public/js/main.js"></script>
+    <script src="public/js/contact.js"></script>
+</body>
+</html>

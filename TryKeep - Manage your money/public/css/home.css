@@ -1,157 +1,5 @@
 @import 'fonts.css';
 
-/* 
-#461220
-#8c2f39
-#9f3541
-#b23a48
-#fcb9b2
-#fed0bb
-#101f2e
-#15273a
-*/
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: white;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-a{
-    color: #b23a48;
-    text-decoration: none;
-    font-family: Quick-Bold;
-    transition: .5s;
-}
-
-a:hover{
-    color: #8d222e;
-}
-
-/* Menu */
-
-#logo {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    text-decoration: underline;
-    text-decoration-color: #15273a;
-}
-
-#logo img {
-    width: 40px;
-}
-
-#logo h3 {
-    font-size: 26px;
-    color: white;
-    font-family: Quick-SemiBold;
-}
-
-#logo span {
-    color: #B23A48;
-}
-
-#header {
-    background-color: #101f2e;
-    box-shadow: 0px 8px 16px 0px #101f2e;
-    z-index: 1001;
-    display: flex;
-    position: fixed;
-    width: 100%;
-    align-items: center;
-    box-sizing: border-box;
-    height: 70px;
-    padding: 16px 32px;
-    justify-content: space-between;
-}
-
-#menu {
-    display: flex;
-    gap: 8px;
-    list-style: none;
-}
-
-#menu a {
-    color: #f0f0f0;
-    display: block;
-    padding: 8px;
-    font-family: Quick-SemiBold;
-    border-radius: 10px;
-    text-shadow: 0 0 3px white;
-}
-
-#menu a:hover {
-    background-color: #122335;
-}
-
-#btn-mobile {
-    display: none;
-}
-
-@media(max-width: 600px) {
-    #menu {
-        display: block;
-        position: absolute;
-        width: 60%;
-        height: calc(100vh - 70px);
-        top: 70px;
-        left: calc(-60% - 16px);
-        padding-top: 26px;
-        z-index: 1000;
-        background-color: #101F2D;
-        box-shadow: 8px 0px 16px 0px #101f2e;
-        transition: .6s;
-    }
-    #menu a {
-        text-align: center;
-        padding: 16px 0;
-        margin: 0 16px;
-    }
-    #nav.active #menu {
-        left: 0;
-    }
-    #btn-mobile {
-        display: flex;
-        padding: 8px 16px;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
-    #hamburger {
-        color: #f6f6f6;
-        border-top: 2px solid;
-        width: 20px;
-    }
-    #hamburger::after, #hamburger::before {
-        content: '';
-        display: block;
-        width: 20px;
-        height: 2px;
-        margin-top: 5px;
-        background-color: currentColor;
-        transition: .4s;
-        position: relative;
-    }
-    #nav.active #hamburger {
-        border-top-color: transparent;
-    }
-    #nav.active #hamburger::after {
-        transform: rotate(135deg);
-        top: -7px;
-        box-shadow: 0 0 5px white;
-    }
-    #nav.active #hamburger::before {
-        transform: rotate(-135deg);
-        box-shadow: 0 0 5px white;
-    }
-}
-
 /* Wallpaper */
 
 #wallpaper {
@@ -409,8 +257,7 @@ a:hover{
 
 .row-end p {
     margin-top: 16px;
-    color: #f6f6f6;
-    opacity: .4;
+    color: #f6f6f652;
     font-family: Quick-SemiBold;
     font-size: 20px;
     text-align: center;
@@ -497,6 +344,127 @@ a:hover{
     color: white;
 }
 
+/* Map */
+
+#map {
+    background-color: #f6f6f6;
+    width: 100%;
+}
+
+#container-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    transition: .6s;
+}
+
+#iframe {
+    height: 100%;
+    width: 50%;
+    transition: .6s;
+}
+
+#iframe iframe {
+    width: calc(100% - 20px);
+    height: 400px;
+    border: 10px solid #e0e0e0;
+    transition: .6s;
+}
+
+#desc {
+    padding: 0px 30px 0px 60px;
+    height: 100%;
+    width: 50%;
+    transition: .6s;
+}
+
+#desc h4 {
+    font-family: Quick-Bold;
+    font-size: 38px;
+    color: #15273A;
+    margin-bottom: 10px;
+    transition: .6s;
+}
+
+#desc p {
+    font-family: Quick-SemiBold;
+    font-size: 20px;
+    color: #15273ad8;
+    transition: .6s;
+}
+
+#desc i {
+    color: #B23A48;
+    padding-right: .8rem;
+}
+
+#desc #btn {
+    border-radius: 18px;
+    margin-top: 42px;
+    padding: 10px 24px;
+    cursor: pointer;
+    border: none;
+    background-color: #101F2E;
+    color: white;
+    font-family: Quick-Bold;
+    font-size: 18px;
+    transition: .6s;
+}
+
+@media(max-width: 780px) {
+    #desc h4 {
+        font-size: 30px;
+    }
+    #desc p {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 680px) {
+    #desc #btn {
+        margin-top: 32px;
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 600px) {
+    #container-map {
+        display: block;
+        padding: 30px;
+    }
+    #iframe {
+        width: 100%;
+    }
+    #desc {
+        padding: 30px 0px;
+        width: 100%;
+    } 
+    #desc h4 {
+        font-size: 30px;
+        text-align: center;
+    }
+    #desc p {
+        font-size: 16px;
+        text-align: center;
+    }
+    #desc #btn {
+        width: 140px;
+        margin-left: calc((100% - 140px) / 2);
+        margin-top: 30px;
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 425px) {
+    #container-map {
+        display: block;
+        padding: 10px;
+    }
+}
+
 /* Footer */
 
 .container-foo {
@@ -578,24 +546,4 @@ a:hover{
 		transition: .5s;	
 		text-align: center;
 	}
-}
-
-/* Anime Classes */
-
-.anime-top{
-    opacity: 0;
-    transform: translate3d(0, -50px, 0);
-    transition: .5s;
-}
-
-.anime-left{
-    opacity: 0;
-    transform: translate3d(-100px, 0, 0);
-    transition: .5s;
-}
-
-.anime-start{
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    transition: .5s;
 }

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/fontawesome/css/all.css">
     <link rel="stylesheet" href="/public/css/flickity.css">
-    <link rel="stylesheet" href="/public/css/website.css">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/home.css">
     <title>TryKeep | Home</title>
 </head>
 <body>
@@ -23,10 +24,10 @@
                 <span id="hamburger"></span>
             </button>
             <ul id="menu" role="menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/">Contact</a></li>
-                <li><a href="/">Sign In</a></li>
-                <li><a href="/">Sign Up</a></li>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/signIn.html">Sign In</a></li>
+                <li><a href="/signUp.html">Sign Up</a></li>
             </ul>
         </nav>
     </header>
@@ -102,6 +103,24 @@
         <div class="slide-cell" style="background-image: url('public/svg/prayingmantisicon.svg');"></div>
     </section>
 
+    <!-- Map -->
+
+    <section id="map">
+        <div id="container-map">
+            <div id="iframe">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.434084277819!2d-46.40032459367123!3d-23.552848381776816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce65086cafaf55%3A0xf7da96815e7611da!2sETEC%20de%20Guaianazes!5e0!3m2!1spt-BR!2sbr!4v1623101737553!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div id="desc">
+                <h4>The headquarter</h4>
+                <p><i class="fas fa-user-tie"></i>David Almeida, CEO</p>
+                <p><i class="fas fa-map-marked-alt"></i>St. Felíciano de Mendonça, 290</p>
+                <p><i class="fas fa-globe-americas"></i></i>Brazil</p>
+                <p><i class="fas fa-flag"></i>São Paulo - SP</p>
+                <a href="/contact.html"><button id="btn">Contact Us</button></a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
 
     <footer>
@@ -132,7 +151,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="public/js/flickity.pkgd.js"></script>
-    <script src="public/js/website.js"></script>
+    <script src="public/js/main.js"></script>
+    <script src="public/js/home.js"></script>
 
 </body>
 </html>
