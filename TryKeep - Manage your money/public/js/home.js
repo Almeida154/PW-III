@@ -31,7 +31,7 @@ const partners = ['centropaula', 'flaticon', 'freepik', 'origamid', 'vscode']
 partners.forEach(partner => {
     let div = document.createElement('div')
     div.classList.add('slide-cell')
-    div.style.backgroundImage = `url('public/svg/slide/${partner}.svg')`
+    div.style.backgroundImage = `url('../public/svg/slide/${partner}.svg')`
     slidePartners.append(div)
 })
 

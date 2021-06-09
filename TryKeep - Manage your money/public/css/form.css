@@ -1,0 +1,151 @@
+body {
+    background-color: #15273a;
+}
+
+/* Animation */
+
+@keyframes upContainer {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes upElements {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Container */
+
+#container {
+    padding-top: 70px;
+    margin: 0 auto;
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#platform {
+    margin: 24px;
+    display: flex;
+    background-color: #B23A48;
+    box-shadow: 0px 6px 12px 0px #b23a489f;
+    width: 880px;
+    height: 460px;
+    border-radius: 10px;
+    transition: .6s;
+    animation: upContainer .2s .2s backwards;
+}
+
+#form{
+    width: 30%;
+    margin: 60px;
+    transition: .6s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#helper {
+    background-color: #eeeeee;
+    padding: 40px 30px;
+    border-radius: 10px;
+    animation: upElements .4s .6s backwards;
+}
+
+#helper h3 {
+    color: #7C2735;
+    font-family: Quick-Light;
+    font-size: 35px;
+    transition: .6s;
+    animation: upElements .4s .8s backwards;
+}
+
+#helper p {
+    text-align: center;
+    font-size: 14px;
+    color: #15273a9f;
+    margin-top: 20px;
+    font-family: Quick-SemiBold;
+    animation: upElements .4s .8s backwards;
+}
+
+#icon {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: upElements .4s .4s backwards;
+    transition: .6s;
+}
+
+#icon img {
+    width: 100%;
+    transition: .6s;
+    animation: upElements .4s .4s backwards;
+}
+
+/* Form */
+
+::placeholder {
+    color: #bebebe;
+}
+
+#form-container {
+    width: min-content;
+    animation: upElements .4s .8s backwards;
+}
+
+form {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input,
+form button {
+    width: 180px;
+    margin-top: 5px;
+    padding: 10px 16px;
+    border: none;
+    background-color: #e7e7e7;
+    font-family: Quick-Bold;
+    font-size: 16px;
+    color: #bebebe;
+    transition: .3s
+}
+
+form button {
+    box-sizing: content-box;
+    background-color: #ac4450;
+    color: #e7e7e7;
+    cursor: pointer;
+}
+
+form textarea {
+    height: 60px;
+    resize: none;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+input[type='text']:hover,
+input[type='password']:hover,
+form button:hover,
+textarea:hover {
+    background-color: #dfdfdf;
+}

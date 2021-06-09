@@ -71,6 +71,8 @@ a:hover{
     height: 70px;
     padding: 16px 32px;
     justify-content: space-between;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 #menu {
@@ -80,11 +82,16 @@ a:hover{
 }
 
 #menu a {
+    opacity: .6;
     color: #f0f0f0;
     display: block;
     padding: 8px;
     font-family: Quick-SemiBold;
     border-radius: 10px;
+}
+
+#menu .active-link {
+    opacity: 1;
     text-shadow: 0 0 3px white;
 }
 
