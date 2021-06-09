@@ -145,7 +145,6 @@ input:focus, textarea:focus {
 
 input[type='text']:hover,
 input[type='password']:hover,
-form button:hover,
 textarea:hover {
     background-color: #dfdfdf;
 }
