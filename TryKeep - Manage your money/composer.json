@@ -1,0 +1,16 @@
+{
+    "name": "david/trykeep",
+    "description": "a money manager website",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "David Almeida",
+            "email": "davidalmeida154@gmail.com"
+        }
+    ],
+    "require": {}
+}
