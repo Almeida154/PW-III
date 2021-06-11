@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/fontawesome/css/all.css">
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="../public/css/form.css">
-    <link rel="stylesheet" href="/public/css/signUp.css">
+    <link rel="stylesheet" href="../public/css/signUp.css">
     <title>TryKeep | Contact</title>
 </head>
 <body>
@@ -42,15 +42,15 @@
             <div id="form">
                 <div id="helper">
                     <h3>Hello!</h3>
-                    <form>
+                    <form id="formStart">
                         <div id="form-container">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Email">
-                            <input type="password" placeholder="Password">
-                            <button type="submit">Sign In</button>
+                            <input type="text" placeholder="Name" name="name">
+                            <input type="text" placeholder="Email" name="email">
+                            <input type="password" placeholder="Password" name="password">
+                            <button type="submit">Sign Up</button>
                         </div>
                     </form>
-                    <p>New here? 
+                    <p>Have an account? 
                         <span>
                             <a href="signIn.html">Sign in</a>
                         </span>
@@ -63,6 +63,7 @@
     <!-- Scripts -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../public/js/main.js"></script>
     <script src="../public/js/signUp.js"></script>
 </body>
