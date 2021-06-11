@@ -56,6 +56,7 @@ function toTop() {
 // Setting Functions
 
 $(document).ready(() => {
+    $('#home').addClass('active-link');
     animeJust()
     toTop()
 })

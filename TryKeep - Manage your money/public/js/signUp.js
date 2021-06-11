@@ -1,3 +1,6 @@
+$(document).ready(() => {
+    $('#signUp').addClass('active-link');
+})
 
 const user = {
     name: '',
@@ -12,14 +15,14 @@ const user = {
 // Ajax
 
 function ajaxStart() {
-    $.get('signUp.html').done(response => {
+    $.get('signUp').done(response => {
         $('#helper').html($(response).find('#helper').children())
         $('#formStart').submit(e => start(e))
     })
 }
 
 function ajaxIncome() {
-    $.get('accountSteps/income.html').done(response => {
+    $.get('accountSteps/income').done(response => {
         $('#helper').html(response)
         $('#income-back').click(() => back('start'))
         $('#formIncome').submit(e => income(e))
@@ -27,7 +30,7 @@ function ajaxIncome() {
 }
 
 function ajaxExpense() {
-    $.get('accountSteps/expense.html').done(response => {
+    $.get('accountSteps/expense').done(response => {
         $('#helper').html(response)
         $('#expense-back').click(() => back('income'))
         $('#formExpense').submit(e => expense(e))
@@ -35,7 +38,7 @@ function ajaxExpense() {
 }
 
 function ajaxInfo() {
-    $.get('accountSteps/info.html').done(response => {
+    $.get('accountSteps/info').done(response => {
         $('#helper').html(response)
         $('#title-name').append(`Be welcome, ${capitalize(user.name.split(' ')[0])}!`)
         $('#info-back').click(() => back('expense'))

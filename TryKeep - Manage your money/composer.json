@@ -12,5 +12,7 @@
             "email": "davidalmeida154@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.3"
+    }
 }

@@ -1,35 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'template/main.twig.php' %}
+
+{% block head %}
     <link rel="stylesheet" href="../public/css/easydropdown.flat.css">
-    <link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="../public/css/contact.css">
     <title>TryKeep | Contact</title>
-</head>
-<body>
+{% endblock %}
 
-    <!-- Menu -->
-
-    <header id="header">
-        <a href="/views/home.html" id="logo">
-            <img src="../public/svg/prayingmantisicon.svg" alt="An praying mantis as a icon">
-            <h3>Try<span>Keep</span></h3>
-        </a>
-        <nav id="nav">
-            <button id="btn-mobile" aria-label="Open Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
-                <span id="hamburger"></span>
-            </button>
-            <ul id="menu" role="menu">
-                <li><a href="home.html">Home</a></li>
-                <li><a class="active-link" href="contact.html">Contact</a></li>
-                <li><a href="signIn.html">Sign In</a></li>
-                <li><a href="signUp.html">Sign Up</a></li>
-            </ul>
-        </nav>
-    </header>
+{% block body %}
 
     <!-- Container -->
 
@@ -65,5 +42,5 @@
     <script src="../public/js/jquery.easydropdown.js"></script>
     <script src="../public/js/main.js"></script>
     <script src="../public/js/contact.js"></script>
-</body>
-</html>
+
+{% endblock %}

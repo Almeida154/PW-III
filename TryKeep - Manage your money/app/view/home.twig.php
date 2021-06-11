@@ -1,36 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'template/main.twig.php' %}
+
+{% block head %}
     <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <link rel="stylesheet" href="../public/css/flickity.css">
-    <link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="../public/css/home.css">
     <title>TryKeep | Home</title>
-</head>
-<body>
+{% endblock %}
 
-    <!-- Menu -->
-
-    <header id="header">
-        <a href="/views/home.html" id="logo">
-            <img src="../public/svg/prayingmantisicon.svg" alt="An praying mantis as a icon">
-            <h3>Try<span>Keep</span></h3>
-        </a>
-        <nav id="nav">
-            <button id="btn-mobile" aria-label="Open Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
-                <span id="hamburger"></span>
-            </button>
-            <ul id="menu" role="menu">
-                <li><a class="active-link" href="home.html">Home</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="signIn.html">Sign In</a></li>
-                <li><a href="signUp.html">Sign Up</a></li>
-            </ul>
-        </nav>
-    </header>
+{% block body %}
 
     <!-- Wallpaper -->
 
@@ -49,9 +26,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Wave 01 -->
-
+    
     <div class="wave01"></div>
 
     <!-- Main -->
@@ -70,8 +45,6 @@
             </div>
         </div>
 
-        <!-- Wave 02 -->
-
         <div class="wave02"></div>
 
         <!-- row -->
@@ -85,8 +58,6 @@
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quas unde dolorum reiciendis voluptatem consequatur ullam, laborum illum autem cum rerum placeat aliquam odio repudiandae suscipit numquam, veritatis, aliquid inventore?</p>
             </div>
         </div>
-
-        <!-- Wave 03 -->
 
         <div class="wave03"></div>
 
@@ -121,38 +92,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
-
-    <footer>
-        <div class="container-foo">
-            <div class="helper">
-                <h3 id="logo-anchor">Try<span>Keep</span></h3>
-                <div class="icons">
-                    <div class="icon-wrapper">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-
-                    <div class="icon-wrapper">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-
-                    <div class="icon-wrapper">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div> 
-        </div>
-        <div class="credits">
-            <p>Developed by <a target="_blank" href="https://www.linkedin.com/in/david-almeida-3b267a172/">David Almeida</a></p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
+    {% include 'template/footer.twig.php' %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="../public/js/flickity.pkgd.js"></script>
     <script src="../public/js/main.js"></script>
     <script src="../public/js/home.js"></script>
 
-</body>
-</html>
+{% endblock %}

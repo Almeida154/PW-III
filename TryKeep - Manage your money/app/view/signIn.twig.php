@@ -1,40 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
-    <link rel="stylesheet" href="../public/css/main.css">
+{% extends 'template/main.twig.php' %}
+
+{% block head %}
     <link rel="stylesheet" href="../public/css/form.css">
     <link rel="stylesheet" href="../public/css/signIn.css">
     <title>TryKeep | Sign In</title>
-</head>
-<body>
+{% endblock %}
 
-    <!-- Menu -->
+{% block body %}
 
-    <header id="header">
-        <a href="/views/home.html" id="logo">
-            <img src="../public/svg/prayingmantisicon.svg" alt="An praying mantis as a icon">
-            <h3>Try<span>Keep</span></h3>
-        </a>
-        <nav id="nav">
-            <button id="btn-mobile" aria-label="Open Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
-                <span id="hamburger"></span>
-            </button>
-            <ul id="menu" role="menu">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a class="active-link" href="signIn.html">Sign In</a></li>
-                <li><a href="signUp.html">Sign Up</a></li>
-            </ul>
-        </nav>
-    </header>
+        <!-- Container -->
 
-    <!-- Container -->
-
-    <section id="container">
+        <section id="container">
         <div id="platform">
             <div id="icon">
                 <img src="../public/svg/iconSignIn.svg" alt="Contact Icon">
@@ -64,5 +40,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="../public/js/main.js"></script>
     <script src="../public/js/signIn.js"></script>
-</body>
-</html>
+
+{% endblock %}

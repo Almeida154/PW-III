@@ -46,9 +46,32 @@ class RouterCore {
                 if(is_callable($get['callback'])) {
                     $get['callback']();
                     break;
+                } else {
+                    $this->controller($get['callback']);
                 }
             }
         }
+    }
+
+    private function controller($callback) {
+        $ex = explode('@', $callback);
+        if(!isset($ex[0]) || !isset($ex[1])) {
+            (new \app\controller\ErrorController)->notFound('Controller or method not found', 'Sorry, I cant find ' . $callback, 404);
+            return;
+        }
+
+        $controller = 'app\\controller\\' . $ex[0];
+        if(!class_exists($controller)) {
+            (new \app\controller\ErrorController)->notFound('Controller not found', 'Sorry, I cant find ' . $callback, 404);
+            return;
+        }
+
+        if(!method_exists($controller, $ex[1])) {
+            (new \app\controller\ErrorController)->notFound('Method not found', 'Sorry, I cant find ' . $callback, 404);
+            return;
+        }
+
+        call_user_func_array([new $controller, $ex[1]], []);
     }
 
     private function normalizeURI($arr) {
