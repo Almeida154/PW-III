@@ -42,7 +42,25 @@ function ajaxInfo() {
         $('#helper').html(response)
         $('#title-name').append(`Be welcome, ${capitalize(user.name.split(' ')[0])}!`)
         $('#info-back').click(() => back('expense'))
-        $('#formWelcome').submit(e => info(e))
+        $('#inputUser').css('display', 'none')
+        $('#inputUser').val(JSON.stringify(user))
+        $('#formInfo').submit(e => info(e))
+    })
+}
+
+function ajaxRegister() {
+    $.ajax({
+        url: 'signUp/newUser',
+        type: 'POST',
+        dataType: 'json',
+        success: Toast.fire({
+            icon: 'success',
+            title: 'User registered!'
+        }),
+        error: Toast.fire({
+            icon: 'error',
+            title: 'Error registering!'
+        })
     })
 }
 
@@ -53,14 +71,14 @@ $('#formStart').submit(e => start(e))
 function start(e) {
     e.preventDefault()
     const { name, email, password } = formStart
-    if([name, email, password].every(input => input.value != '')){
+    //if([name, email, password].every(input => input.value != '')){
         ajaxIncome()
         user.name = name.value
         user.email = email.value
         user.password = password.value
         return
-    }
-    fieldEmptyAlert()
+    //}
+    //fieldEmptyAlert()
 }
 
 // Step 2
@@ -68,12 +86,12 @@ function start(e) {
 function income(e) {
     e.preventDefault()
     const { income } = formIncome
-    if(income.value != ''){
+    //if(income.value != ''){
         ajaxExpense()
         user.account.income = income.value
         return
-    }
-    fieldEmptyAlert()
+    //}
+    //fieldEmptyAlert()
 }
 
 // Step 3
@@ -81,18 +99,19 @@ function income(e) {
 function expense(e) {
     e.preventDefault()
     const { expense } = formExpense
-    if(expense.value != ''){
+    //if(expense.value != ''){
         ajaxInfo()
         user.account.expense = expense.value
         return
-    }
-    fieldEmptyAlert()
+    //}
+    //fieldEmptyAlert()
 }
 
 // Step 4
 
 function info(e) {
-    e.preventDefault()
+    //e.preventDefault()
+    ajaxRegister()
 }
 
 // Alert

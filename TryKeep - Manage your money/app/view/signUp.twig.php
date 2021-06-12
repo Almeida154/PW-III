@@ -19,7 +19,7 @@
             <div id="form">
                 <div id="helper">
                     <h3>Hello!</h3>
-                    <form id="formStart">
+                    <form id="formStart" autocomplete="off">
                         <div id="form-container">
                             <input type="text" placeholder="Name" name="name">
                             <input type="text" placeholder="Email" name="email">

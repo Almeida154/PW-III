@@ -18,6 +18,8 @@ class RouterCore {
         $ex = explode('/', $_SERVER['REQUEST_URI']);
         $uri = $this->normalizeURI($ex);
 
+        //if(strpos($uri, '?')) $uri = mb_substr($uri, 0, strpos($uri, '?'));
+
         for($i = 0; $i < UNSET_URI_COUNT; $i++) unset($uri[$i]);
 
         $this->uri = implode('/', $this->normalizeURI($uri));
@@ -25,6 +27,13 @@ class RouterCore {
     }
 
     private function get($route, $callback) {
+        $this->getArr[] = [
+            'route' => $route,
+            'callback' => $callback
+        ];
+    }
+
+    private function post($route, $callback) {
         $this->getArr[] = [
             'route' => $route,
             'callback' => $callback
@@ -45,10 +54,23 @@ class RouterCore {
             if($this->uri == $r) {
                 if(is_callable($get['callback'])) {
                     $get['callback']();
-                    break;
-                } else {
-                    $this->controller($get['callback']);
+                    return;
                 }
+                $this->controller($get['callback']);
+            }
+        }
+    }
+
+    private function executePOST() {
+        foreach($this->getArr as $get) {
+            $r = substr($get['route'], 1);
+            if(substr($r, -1) == '/') $r = substr($r, 0, -1);
+            if($this->uri == $r) {
+                if(is_callable($get['callback'])) {
+                    $get['callback']();
+                    return;
+                }
+                $this->controller($get['callback']);
             }
         }
     }

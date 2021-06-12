@@ -12,3 +12,5 @@ $this->get('/signUp', 'GeneralController@signUp');
 $this->get('/accountSteps/income', 'GeneralController@income');
 $this->get('/accountSteps/expense', 'GeneralController@expense');
 $this->get('/accountSteps/info', 'GeneralController@info');
+
+$this->post('/signUp/newUser', 'DatabaseController@insertUser');
