@@ -6,10 +6,8 @@ const user = {
     name: '',
     email: '',
     password: '',
-    account: {
-        income: 0,
-        expense: 0,
-    }
+    income: 0,
+    expense: 0,
 }
 
 // Ajax
@@ -52,15 +50,12 @@ function ajaxRegister() {
     $.ajax({
         url: 'signUp/newUser',
         type: 'POST',
-        dataType: 'json',
-        success: Toast.fire({
-            icon: 'success',
-            title: 'User registered!'
-        }),
-        error: Toast.fire({
-            icon: 'error',
-            title: 'Error registering!'
-        })
+        data: $('#formInfo').serialize(),
+        success: response => {
+            console.log(response);
+            //registerAlert(response.name, true)
+        },
+        error: () => registerAlert(null, false)
     })
 }
 
@@ -88,7 +83,7 @@ function income(e) {
     const { income } = formIncome
     //if(income.value != ''){
         ajaxExpense()
-        user.account.income = income.value
+        user.income = income.value
         return
     //}
     //fieldEmptyAlert()
@@ -101,7 +96,7 @@ function expense(e) {
     const { expense } = formExpense
     //if(expense.value != ''){
         ajaxInfo()
-        user.account.expense = expense.value
+        user.expense = expense.value
         return
     //}
     //fieldEmptyAlert()
@@ -110,7 +105,7 @@ function expense(e) {
 // Step 4
 
 function info(e) {
-    //e.preventDefault()
+    e.preventDefault()
     ajaxRegister()
 }
 
@@ -136,6 +131,10 @@ function capitalize(string) {
 
 function fieldEmptyAlert() {
     Toast.fire({icon: 'error', title: `Don't forget any field`})
+}
+
+function registerAlert(name, status) {
+    Toast.fire({icon: status ? 'success' : 'error', title: status ? `${name} your registration was successful` : `I'm sorry, Something was wrong`})
 }
 
 function back(step) {
