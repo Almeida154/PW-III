@@ -1,5 +1,5 @@
 
-<!-- Menu -->
+<!-- Navbar -->
 
 <header id="header">
     <a href="home" id="logo">

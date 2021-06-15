@@ -41,7 +41,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../public/js/functions/jquery.maskMoney.js"></script>
     <script src="../public/js/main.js"></script>
-    <script src="../public/js/signUp.js"></script>
+    <script type="module" src="../public/js/signUp.js"></script>
     
 {% endblock %}

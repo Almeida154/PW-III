@@ -29,14 +29,12 @@ class User {
     function update(Object $params) {
         $sql = 'UPDATE ' . $this->table . ' SET 
             name = :name, email = :email, password = :password WHERE id = :id';
-
         $params = [
             ':id' => $params->id,
             ':name' => $params->name,
             ':email' => $params->email,
             ':password' => $params->password
         ];
-
         return $this->pdo->executeNonQuery($sql, $params);
     }
 
@@ -51,8 +49,22 @@ class User {
     function find($id) {
         $sql = 'SELECT * FROM ' . $this->table . ' WHERE id = :id';
         $param = [':id' => $id];
-        $user = $this->pdo->executeQuery($sql, $param, true);
-        return $this->collection($user);
+        return $this->pdo->executeQuery($sql, $param, true);
+    }
+
+    function signIn($email, $password) {
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE email = :email AND password = :password';
+        $params = [
+            ':email' => $email,
+            ':password' => $password
+        ];
+        return $this->pdo->executeQuery($sql, $params, true);
+    }
+
+    function countRowsByEmail($email) {
+        $sql = 'SELECT id FROM ' . $this->table . ' WHERE email = :email';
+        $param = [':email' => $email];
+        return $this->pdo->numberRows($sql, $param);
     }
 
     private function collection($param) {

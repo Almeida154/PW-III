@@ -95,7 +95,7 @@
     {% include 'template/footer.twig.php' %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="../public/js/flickity.pkgd.js"></script>
+    <script src="../public/js/functions/flickity.pkgd.js"></script>
     <script src="../public/js/main.js"></script>
     <script src="../public/js/home.js"></script>
 

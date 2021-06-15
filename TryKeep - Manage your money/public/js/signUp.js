@@ -1,3 +1,6 @@
+
+import { capitalize, capitalizeAll, firstName, sweetAlert, currencyMask } from './functions/util.js'
+
 $(document).ready(() => {
     $('#signUp').addClass('active-link');
 })
@@ -8,6 +11,57 @@ const user = {
     password: '',
     income: 0,
     expense: 0,
+}
+
+// Step 1
+$('#formStart').submit(e => start(e))
+async function start(e) {
+    e.preventDefault()
+    const { name, email, password } = formStart
+    if ([name, email, password].every(input => input.value != '')) {
+        let bool = await validateEmail() === 'true'
+        // console.log(bool)
+        if (bool) {
+            ajaxIncome()
+            user.name = capitalizeAll(name.value)
+            user.email = email.value
+            user.password = password.value
+            return
+        }
+        sweetAlert(`Email already registered!`, false)
+        return
+    }
+    sweetAlert(`Don't forget any field`, false)
+}
+
+// Step 2
+function income(e) {
+    e.preventDefault()
+    const { income } = formIncome
+    if (income.value != ''){
+        ajaxExpense()
+        user.income = parseFloat(income.value.slice(3).replace(/\./g,'').replace(',', '.'))
+        return
+    }
+    sweetAlert(`Don't forget any field`, false)
+}
+
+// Step 3
+function expense(e) {
+    e.preventDefault()
+    const { expense } = formExpense
+    if (expense.value != ''){
+        ajaxInfo()
+        user.expense = parseFloat(expense.value.slice(3).replace(/\./g,'').replace(',', '.'))
+        return
+    }
+    sweetAlert(`Don't forget any field`, false)
+}
+
+// Step 4
+function info(e) {
+    e.preventDefault()
+    ajaxRegister()
 }
 
 // Ajax
@@ -24,6 +78,7 @@ function ajaxIncome() {
         $('#helper').html(response)
         $('#income-back').click(() => back('start'))
         $('#formIncome').submit(e => income(e))
+        currencyMask($('#inputIncome'))
     })
 }
 
@@ -32,13 +87,14 @@ function ajaxExpense() {
         $('#helper').html(response)
         $('#expense-back').click(() => back('income'))
         $('#formExpense').submit(e => expense(e))
+        currencyMask($('#inputExpense'))
     })
 }
 
 function ajaxInfo() {
     $.get('accountSteps/info').done(response => {
         $('#helper').html(response)
-        $('#title-name').append(`Be welcome, ${capitalize(user.name.split(' ')[0])}!`)
+        $('#title-name').append(`Be welcome, ${firstName(user.name)}!`)
         $('#info-back').click(() => back('expense'))
         $('#inputUser').css('display', 'none')
         $('#inputUser').val(JSON.stringify(user))
@@ -53,92 +109,24 @@ function ajaxRegister() {
         data: $('#formInfo').serialize(),
         success: response => {
             console.log(response);
-            //registerAlert(response.name, true)
+            sweetAlert(`${capitalize(firstName(response.name))}, your registration was successful`, true)
         },
-        error: () => registerAlert(null, false)
+        error: () => sweetAlert('Something was wrong', false)
     })
 }
 
-// Step 1
-
-$('#formStart').submit(e => start(e))
-
-function start(e) {
-    e.preventDefault()
-    const { name, email, password } = formStart
-    //if([name, email, password].every(input => input.value != '')){
-        ajaxIncome()
-        user.name = name.value
-        user.email = email.value
-        user.password = password.value
-        return
-    //}
-    //fieldEmptyAlert()
-}
-
-// Step 2
-
-function income(e) {
-    e.preventDefault()
-    const { income } = formIncome
-    //if(income.value != ''){
-        ajaxExpense()
-        user.income = income.value
-        return
-    //}
-    //fieldEmptyAlert()
-}
-
-// Step 3
-
-function expense(e) {
-    e.preventDefault()
-    const { expense } = formExpense
-    //if(expense.value != ''){
-        ajaxInfo()
-        user.expense = expense.value
-        return
-    //}
-    //fieldEmptyAlert()
-}
-
-// Step 4
-
-function info(e) {
-    e.preventDefault()
-    ajaxRegister()
-}
-
-// Alert
-
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'bottom-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-})
-
 // Functions
 
-function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1)
-}
-
-function fieldEmptyAlert() {
-    Toast.fire({icon: 'error', title: `Don't forget any field`})
-}
-
-function registerAlert(name, status) {
-    Toast.fire({icon: status ? 'success' : 'error', title: status ? `${name} your registration was successful` : `I'm sorry, Something was wrong`})
+function validateEmail() {
+    return $.ajax({
+        url: 'signUp/validateEmail',
+        type: 'POST',
+        data: $('#formStart').serialize()
+    })
 }
 
 function back(step) {
-    switch(step) {
+    switch (step) {
         case 'start': ajaxStart(); break;
         case 'income': ajaxIncome(); break;
         case 'expense': ajaxExpense(); break;

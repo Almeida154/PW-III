@@ -39,7 +39,7 @@
     <!-- Scripts -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="../public/js/jquery.easydropdown.js"></script>
+    <script src="../public/js/functions/jquery.easydropdown.js"></script>
     <script src="../public/js/main.js"></script>
     <script src="../public/js/contact.js"></script>
 

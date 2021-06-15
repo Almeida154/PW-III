@@ -35,20 +35,30 @@ class DatabaseController extends Controller {
 
         $user_id = $this->user->insert(json_decode($json));
         $this->firstIncome($user_id, json_decode($json));
-  
+        $this->firstExpense($user_id, json_decode($json));
+        
         $this->response($json);
+    }
+
+    function validateEmail() {
+        $data = Input::post('email');
+        if ($this->user->countRowsByEmail($data) > 0) { 
+            echo 'false';
+            return;
+        }
+        echo 'true';
     }
 
     // Functions
 
+    private function initialize() {       
+        $this->incomeTag->insert('Monthly Income');
+        $this->expenseTag->insert('Monthly Expense');
+    }
+
     private function response($json) {
         header("Content-type: application/json; charset=utf-8");
         echo $json;
-    }
-
-    private function initialize() {       
-        if($this->incomeTag->countRowsByName('Monthly Income') == 0)
-            $this->incomeTag->insert('Monthly Income');
     }
 
     private function firstIncome($user_id, $json) {
@@ -65,14 +75,14 @@ class DatabaseController extends Controller {
         }
     }
 
-    private function firstExpense($user_id) {
+    private function firstExpense($user_id, $json) {
         try {
-            $this->tbIncome->insert((Object) array(
+            $this->expense->insert((Object) array(
                 'title' => 'First expense',
-                'description' => 'Your first income :)',
-                'amount' => json_decode($json)->income,
+                'description' => 'Your first expense :)',
+                'amount' => $json->expense,
                 'user_id' => $user_id,
-                'tag_id' => $this->tbIncomeTag->findByTagName('Monthly Income')[0]->id
+                'tag_id' => $this->expenseTag->findByTagName('Monthly Expense')[0]->id
             ));
         } catch (\Throwable $th) {
             echo $th;

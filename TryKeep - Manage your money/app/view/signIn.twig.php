@@ -18,12 +18,15 @@
             <div id="form">
                 <div id="helper">
                     <h3>Hi :)</h3>
-                    <form>
+                    <form id="signInForm">
                         <div id="form-container">
-                            <input type="text" placeholder="Email">
-                            <input type="password" placeholder="Password">
+                            <input id="emailInput" value="almeida154@gmail.com" type="text" name="email" placeholder="Email">
+                            <input value="bgk35670" type="password" name="password" placeholder="Password">
                             <button type="submit">Sign In</button>
                         </div>
+                    </form>
+                    <form id="validatedForm" method="POST" action="dashboard">
+                        <input id="idInput" type="text" name="id" value="">
                     </form>
                     <p>New here?
                         <span>
@@ -38,7 +41,8 @@
     <!-- Scripts -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../public/js/main.js"></script>
-    <script src="../public/js/signIn.js"></script>
+    <script type="module" src="../public/js/signIn.js"></script>
 
 {% endblock %}

@@ -5,7 +5,7 @@
 <p class="steps-form">Put your fixed expenses, as bills, school, etc.</p>
 <form id="formExpense" autocomplete="off">
     <div class="steps-form" id="form-container">
-        <input type="text" placeholder="Your expense" name="expense">
+        <input id="inputExpense" type="text" placeholder="R$ 0,00" name="expense">
         <button type="submit">Next</button>
     </div>
 </form>
