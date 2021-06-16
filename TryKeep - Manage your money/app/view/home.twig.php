@@ -2,7 +2,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="../public/fontawesome/css/all.css">
-    <link rel="stylesheet" href="../public/css/flickity.css">
+    <link rel="stylesheet" href="../public/css/util/flickity.css">
     <link rel="stylesheet" href="../public/css/home.css">
     <title>TryKeep | Home</title>
 {% endblock %}
