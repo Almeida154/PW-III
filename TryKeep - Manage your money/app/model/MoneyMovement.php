@@ -13,15 +13,17 @@ class MoneyMovement {
         $this->pdo = new Connection();
         $this->table = $table;
         $this->category = $category;
+        date_default_timezone_set('America/Sao_Paulo');
     }
 
     function insert(Object $params) {
-        $sql = 'INSERT INTO ' . $this->table . '(title, description, amount, user_id, tag_id, category_id) VALUES(:title, :description, :amount, :user_id, :tag_id, :category_id)';
+        $sql = 'INSERT INTO ' . $this->table . '(title, description, amount, date, user_id, tag_id, category_id) VALUES(:title, :description, :amount, :date, :user_id, :tag_id, :category_id)';
         
         $params = [
             ':title' => $params->title,
             ':description' => $params->description,
             ':amount' => $params->amount,
+            ':date' => date('Y-m-d H:i:s'),
             ':user_id' => $params->user_id,
             ':tag_id' => $params->tag_id,
             ':category_id' => $this->category
@@ -47,26 +49,71 @@ class MoneyMovement {
         return $this->pdo->executeNonQuery($sql, $params);
     }
 
-    function all() {
-        $sql = 'SELECT title, description, amount FROM ' . $this->table . 'WHERE category_id = ' . $this->category;
-        $expenses = $this->pdo->executeQuery($sql);
-        $allExpenses = null;
-        foreach($expenses as $expense) $allExpenses[] = $this->collection($expense);
-        return $allExpenses;
+    function all($user_id, $field) {
+        $sql = 'SELECT title, description, amount, tag, category, date FROM tbmoneymovement
+                    INNER JOIN tbtag on tbtag.id = tbmoneymovement.tag_id
+                    INNER JOIN tbcategory on tbcategory.id = tbmoneymovement.category_id
+                        WHERE user_id = :user_id AND tbmoneymovement.category_id = ' . $this->category . '
+                            ORDER BY ' . $field . ' DESC';
+        $param = [':user_id' => $user_id];
+        $list = $this->pdo->executeQuery($sql, $param);
+        $allList = null;
+        foreach($list as $moneyMovement) $allList[] = $this->collectionList($moneyMovement);
+        return $allList;
+    }
+
+    function search($user_id, $query) {
+        $sql = "SELECT title, description, amount, tag, category, date FROM tbmoneymovement
+                    INNER JOIN tbtag on tbtag.id = tbmoneymovement.tag_id
+                    INNER JOIN tbcategory on tbcategory.id = tbmoneymovement.category_id
+                        WHERE user_id = :user_id AND title LIKE '%" . $query . "%'
+                            ORDER BY date DESC";
+        $param = [':user_id' => $user_id];
+        $list = $this->pdo->executeQuery($sql, $param);
+        $allList = null;
+        foreach($list as $moneyMovement) $allList[] = $this->collectionList($moneyMovement);
+        return $allList;
     }
 
     function find($id) {
         $sql = 'SELECT * FROM ' . $this->table . ' WHERE id = :id';
         $param = [':id' => $id];
-        $expense = $this->pdo->executeQuery($sql, $param, true);
-        return $this->collection($expense);
+        $moneyMovement = $this->pdo->executeQuery($sql, $param, true);
+        return $this->collection($moneyMovement);
     }
 
-    function findByTag($tag_id) {
-        $sql = 'SELECT * FROM ' . $this->table . ' WHERE tag_id = :tag_id';
-        $param = [':tag_id' => $tag_id];
-        $expense = $this->pdo->executeQuery($sql, $param);
-        return $this->collection($expense);
+    function getByTag($user_id, $tag_id, $field) {
+        $sql = 'SELECT title, description, amount, tag, category, date FROM tbmoneymovement
+                    INNER JOIN tbtag on tbtag.id = tbmoneymovement.tag_id
+                    INNER JOIN tbcategory on tbcategory.id = tbmoneymovement.category_id
+                        WHERE user_id = :user_id 
+                            AND tbmoneymovement.category_id = ' . $this->category . '
+                            AND tag_id = :tag_id
+                                ORDER BY ' . $field . ' DESC';
+        $params = [
+            ':user_id' => $user_id,
+            ':tag_id' => $tag_id
+        ];
+        $list = $this->pdo->executeQuery($sql, $params);
+        $allList = null;
+        foreach($list as $moneyMovement) $allList[] = $this->collectionList($moneyMovement);
+        return $allList;
+    }
+
+    function getAllByTag($user_id, $tag_id, $field) {
+        $sql = 'SELECT title, description, amount, tag, category, date FROM tbmoneymovement
+                    INNER JOIN tbtag on tbtag.id = tbmoneymovement.tag_id
+                    INNER JOIN tbcategory on tbcategory.id = tbmoneymovement.category_id
+                        WHERE user_id = :user_id AND tag_id = :tag_id
+                            ORDER BY ' . $field . ' DESC';
+        $params = [
+            ':user_id' => $user_id,
+            ':tag_id' => $tag_id
+        ];
+        $list = $this->pdo->executeQuery($sql, $params);
+        $allList = null;
+        foreach($list as $moneyMovement) $allList[] = $this->collectionList($moneyMovement);
+        return $allList;
     }
 
     function getTotalAmount() {
@@ -82,6 +129,19 @@ class MoneyMovement {
         return $this->collection($totalAmount);
     }
 
+    function getList($user_id, $field) {
+        $sql = 'SELECT title, description, amount, tag, category, date FROM tbmoneymovement
+                    INNER JOIN tbtag on tbtag.id = tbmoneymovement.tag_id
+                    INNER JOIN tbcategory on tbcategory.id = tbmoneymovement.category_id
+                        WHERE user_id = :user_id
+                            ORDER BY ' . $field . ' DESC';
+        $param = [':user_id' => $user_id];
+        $list = $this->pdo->executeQuery($sql, $param);
+        $allList = null;
+        foreach($list as $moneyMovement) $allList[] = $this->collectionList($moneyMovement);
+        return $allList;
+    }
+
     private function collection($param) {
         return (Object) [
             'id' => $param['id'] ?? null,
@@ -91,6 +151,17 @@ class MoneyMovement {
             'user_id' => $param['user_id'] ?? null,
             'tag_id' => $param['tag_id'] ?? null,
             'category_id' => $param['category_id'] ?? null
+        ];
+    }
+
+    private function collectionList($param) {
+        return (Object) [
+            'title' => $param['title'] ?? null,
+            'description' => $param['description'] ?? null,
+            'amount' => number_format($param['amount'], 2, ',', '.') ?? null,
+            'tag' => $param['tag'] ?? null,
+            'category' => $param['category'] ?? null,
+            'date' => date_format(date_create($param['date']), 'd/m') ?? null
         ];
     }
 }

@@ -18,3 +18,8 @@ $this->post('/signUp/validateEmail', 'DatabaseController@validateEmail');
 
 $this->post('/signIn/validateSignIn', 'DashboardController@signIn');
 $this->post('/dashboard', 'DashboardController@dashboard');
+$this->post('/dashboard/logout', 'DashboardController@logOut');
+$this->post('/dashboard/filter', 'DashboardController@filter');
+
+$this->get('/dashboard/search', 'DashboardController@search');
+$this->get('/dashboard/nonSearch', 'DashboardController@search');

@@ -65,6 +65,14 @@ class Tag {
         return $allTags;
     }
 
+    function getTags() {
+        $sql = 'SELECT id, tag FROM ' . $this->table;
+        $tags = $this->pdo->executeQuery($sql);
+        $allTags = null;
+        foreach($tags as $tag) $allTags[] = $this->collection($tag);
+        return $allTags;
+    }
+
     function countRowsByName($tag) {
         $sql = 'SELECT id FROM ' . $this->table . ' WHERE tag = :tag';
         $param = [':tag' => $tag];

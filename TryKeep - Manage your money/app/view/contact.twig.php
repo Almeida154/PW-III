@@ -1,7 +1,7 @@
 {% extends 'template/main.twig.php' %}
 
 {% block head %}
-    <link rel="stylesheet" href="../public/css/easydropdown.flat.css">
+    <link rel="stylesheet" href="../public/css/util/easydropdown.flat.css">
     <link rel="stylesheet" href="../public/css/contact.css">
     <title>TryKeep | Contact</title>
 {% endblock %}

@@ -5,6 +5,14 @@
     padding: 0;
 }
 
+*:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: #c9c9c9;
+}
+
 body {
     background-color: #f6f6f6;
     box-sizing: border-box;
@@ -55,6 +63,7 @@ a:hover {
     left: 18px;
     max-width: 1036px;
     overflow-x: hidden;
+    overflow-y: hidden;
     box-sizing: border-box;
     padding: 16px 60px;
     justify-content: space-between;
@@ -207,6 +216,12 @@ a:hover {
     font-family: Quick-Light;
     color: #ffffffb4;
     cursor: pointer;
+    transition: .6s;
+}
+
+.active {
+    background-color: #c54251;
+    color: #fff;
     transition: .6s;
 }
 
@@ -369,6 +384,7 @@ a:hover {
     width: 75%;
     border-radius: 16px;
     background-color: white;
+    min-height: 450px;
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0px 8px 16px 0px #0000001a;
@@ -376,12 +392,28 @@ a:hover {
 
 .filter {
     width: 40%;
-    max-height: 250px;
+    max-height: 450px;
     border-radius: 16px;
     background-color: white;
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0px 8px 16px 0px #0000001a;
+}
+
+#search {
+    margin-top: 8px;
+}
+
+input[type='text'] {
+    margin-top: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+    border-radius: 16px;
+    border: none;
+    background-color: #F0F0F0;
+    color: #8b8b8b;
+    font-family: Quick-Bold;
 }
 
 .list h3 {
@@ -399,6 +431,10 @@ a:hover {
 }
 
 .checkbox-group {
+    margin-top: 8px;
+}
+
+.title-filter-type {
     margin-top: 20px;
 }
 
@@ -497,14 +533,16 @@ form button {
 .income {
     color: #06b406 !important;
     font-family: Quick-Bold !important;
+    opacity: 1 !important;
 }
 
 .expense {
     color: #c41010 !important;
     font-family: Quick-Bold !important;
+    opacity: 1 !important;
 }
 
-@media(max-width: 800px) {
+@media(max-width: 830px) {
     .list-container {
         margin-top: 0px;
         display: flex;
@@ -523,8 +561,33 @@ form button {
     }
 }
 
-@media(max-width: 568px) {
+@media(max-width: 624px) {
     .list-container {
         padding-bottom: 18px;
     }
+}
+
+#not-found {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#not-found img {
+    width: 70%;
+}
+
+#not-found p {
+    font-family: Quick-Bold;
+    font-size: 22px;
+}
+
+.title {
+    font-family: Quick-Bold !important;
+    opacity: .7 !important;
 }

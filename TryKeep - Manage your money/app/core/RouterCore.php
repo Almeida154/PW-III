@@ -15,10 +15,11 @@ class RouterCore {
     }
 
     private function initialize() {
-        $ex = explode('/', $_SERVER['REQUEST_URI']);
         $uri = $_SERVER['REQUEST_URI'];
         
         if(strpos($uri, '?')) $uri = mb_substr($uri, 0, strpos($uri, '?'));
+
+        $ex = explode('/', $uri);
         $uri = $this->normalizeURI($ex);
 
         for($i = 0; $i < UNSET_URI_COUNT; $i++) unset($uri[$i]);

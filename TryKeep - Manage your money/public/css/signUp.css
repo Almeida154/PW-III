@@ -61,6 +61,7 @@ i {
     #helper {
         width: 100%;
         min-height: calc(100vh - 70px) !important;
+        box-sizing: border-box;
         border-radius: 0px;
     }
 }

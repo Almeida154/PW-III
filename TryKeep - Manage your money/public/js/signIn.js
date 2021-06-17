@@ -17,11 +17,7 @@ function signIn(e) {
             method: 'POST',
             data: $('#signInForm').serialize(),
             success: response => {
-                if (response != -1) {
-                    $('#idInput').val(response)
-                    $('#validatedForm').submit()
-                    return
-                }
+                if (response != -1) return window.location.href = 'dashboard'
                 sweetAlert('User not found!', false)
             }
         })

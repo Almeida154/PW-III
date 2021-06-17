@@ -1,2 +1,43 @@
+@media(max-width: 680px) {
+    #icon {
+        margin-right: -10%;
+    }
+    #form {
+        margin-left: -10%;
+    }
+}
 
+@media(max-width: 500px) {
+    #platform {
+        display: block;
+    }
+    #icon {
+        display: none;
+    }
+    #form {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+@media(max-width: 450px) {
+    #platform {
+        margin: 0;
+        height: calc(100vh - 70px);
+        border-radius: 0px;
+    }
+}
+
+@media(max-width: 330px) {
+    #form {
+        width: 100%;
+        margin: 0px;
+    }
+    #helper {
+        width: 100%;
+        min-height: calc(100vh - 70px) !important;
+        box-sizing: border-box;
+        border-radius: 0px;
+    }
+}
 

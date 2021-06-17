@@ -20,14 +20,12 @@
                     <h3>Hi :)</h3>
                     <form id="signInForm">
                         <div id="form-container">
-                            <input id="emailInput" value="almeida154@gmail.com" type="text" name="email" placeholder="Email">
+                            <input id="emailInput" value="alameda@gmail.com" type="text" name="email" placeholder="Email">
                             <input value="bgk35670" type="password" name="password" placeholder="Password">
                             <button type="submit">Sign In</button>
                         </div>
                     </form>
-                    <form id="validatedForm" method="POST" action="dashboard">
-                        <input id="idInput" type="text" name="id" value="">
-                    </form>
+
                     <p>New here?
                         <span>
                             <a href="signUp.html">Sign up</a>

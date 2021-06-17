@@ -14,7 +14,7 @@
   background: #f0f0f0ad;
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 624px) {
   .row {
     display: block;
   }
@@ -44,14 +44,15 @@
   vertical-align: middle;
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 624px) {
   .cell {
     display: block;
   }
 }
 
 .row .cell {
-  font-family: Quick-Regular;
+  font-family: Quick-SemiBold;
+  opacity: .5;
   font-size: 15px;
   color: #666666;
   line-height: 1.2;
@@ -62,7 +63,8 @@
 }
 
 .row.header .cell {
-  font-family: Quick-Regular;
+  font-family: Quick-Bold;
+  opacity: 1;
   font-size: 18px;
   color: #c9c9c9;
   line-height: 1.2;
@@ -76,13 +78,13 @@
   border-top-left-radius: 16px;
 }
 
-.row.header .cell:nth-child(4) {
+.row.header .cell:nth-child(5) {
   border-bottom-right-radius: 16px;
   border-top-right-radius: 16px;
 }
 
 .row .cell {
-  padding: 16px 10px;
+  padding: 16px 6px;
 }
 
 .row .cell:nth-child(1) {
@@ -99,6 +101,10 @@
 }
 
 .row .cell:nth-child(4) {
+  width: 20%;
+}
+
+.row .cell:nth-child(5) {
   width: 10%;
   padding-right: 20px;
 }
@@ -111,7 +117,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 568px) {
+@media (max-width: 624px) {
   .row {
     border-bottom: 1px solid #f2f2f2;
     padding: 6px 0px;
