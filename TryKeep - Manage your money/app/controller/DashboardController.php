@@ -38,12 +38,34 @@ class DashboardController extends Controller {
         echo -1;
     }
 
-    function dashboard() {
+    function dashboard($route = 'dashboard') {
         if(!isset($_SESSION['id'])) return header('Location: //localhost/' . BASE . '/public/signIn');
-        $this->render('dashboard', [
+        $this->render($route, [
             'obj' => $this->user->find($_SESSION['id']),
             'list' => $this->getAllMoneyMovements($_SESSION['id'], 'date'),
             'tags' => $this->getAllTags()
+        ]);
+    }
+
+    function home() {
+        $this->dashboard('dashboardElements/home');
+    }
+
+    function stats() {
+        return $this->render('dashboardElements/stats', [
+            'Fodase' => 'Sei lakkkk'
+        ]);
+    }
+
+    function new() {
+        return $this->render('dashboardElements/new', [
+            'Fodase' => 'Sei lakkkk'
+        ]);
+    }
+
+    function config() {
+        return $this->render('dashboardElements/config', [
+            'Fodase' => 'Sei lakkkk'
         ]);
     }
 

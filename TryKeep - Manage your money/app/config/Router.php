@@ -4,6 +4,7 @@
 //     (new app\controller\GeneralController)->home();
 // });
 
+// [Website] //
 $this->get('/', 'GeneralController@home');
 $this->get('/home', 'GeneralController@home');
 $this->get('/contact', 'GeneralController@contact');
@@ -13,13 +14,22 @@ $this->get('/accountSteps/income', 'GeneralController@income');
 $this->get('/accountSteps/expense', 'GeneralController@expense');
 $this->get('/accountSteps/info', 'GeneralController@info');
 
+// [Sign Up] //
 $this->post('/signUp/newUser', 'DatabaseController@insertUser');
 $this->post('/signUp/validateEmail', 'DatabaseController@validateEmail');
 
+// [Sign In and Logout] //
 $this->post('/signIn/validateSignIn', 'DashboardController@signIn');
 $this->post('/dashboard', 'DashboardController@dashboard');
 $this->post('/dashboard/logout', 'DashboardController@logOut');
 $this->post('/dashboard/filter', 'DashboardController@filter');
 
+// [Search] //
 $this->get('/dashboard/search', 'DashboardController@search');
-$this->get('/dashboard/nonSearch', 'DashboardController@search');
+$this->get('/dashboard/nonSearch', 'DashboardController@nonSearch');
+
+// [Navigation] //
+$this->post('/dashboard/home', 'DashboardController@home');
+$this->post('/dashboard/stats', 'DashboardController@stats');
+$this->post('/dashboard/new', 'DashboardController@new');
+$this->post('/dashboard/config', 'DashboardController@config');

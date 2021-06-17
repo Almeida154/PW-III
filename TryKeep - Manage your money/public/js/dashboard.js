@@ -1,8 +1,10 @@
+'use strict';
+
 // Toggle
 
-const btnMobile = document.querySelector('#btn-mobile')
-const sticky = document.querySelector('.sticky-sidebar')
-const nav = document.querySelector('#nav')
+var btnMobile = document.querySelector('#btn-mobile')
+var sticky = document.querySelector('.sticky-sidebar')
+var nav = document.querySelector('#nav')
 
 btnMobile.addEventListener('click', toggleMenu)
 
@@ -18,28 +20,37 @@ function toggleMenu(event) {
     event.currentTarget.setAttribute('aria-label', 'Open Menu')
 }
 
-// Active Navigation
+// Navigation
 
-const containerNavigation = document.querySelectorAll('.container-navigation');
+$('.container-navigation').each(function () {
+    $(this).on("click", function(){
+        console.log($(this).attr('section'));
+        removeNavigationClasses()
+        getSection($(this).attr('section'))
+        $(this).addClass('active')
+    });
+})
 
 function removeNavigationClasses() {
-    containerNavigation.forEach(cn => {
-        if (cn.classList.contains('active'))
-            cn.classList.remove('active')
+    $('.container-navigation').each(function() {
+        $(this).removeClass('active')
     })
 }
 
-containerNavigation.forEach(cn => {
-    cn.addEventListener('click', () => {
-        removeNavigationClasses()
-        cn.classList.add('active')
+function getSection(section) {
+    $.ajax({
+        url: `dashboard/${section}`,
+        type: 'post',
+        success: response => {
+            $('.content-container').html($(response).find('.content-container').html())
+        }
     })
-})
+}
 
 // Category Color
 
 function colorCategory() {
-    const categories = document.querySelectorAll('#category')
+    var categories = document.querySelectorAll('#category')
     categories.forEach(category => {
         if (category.getAttribute('category') == 'Income') return category.classList.add('income')
         category.classList.add('expense')
@@ -50,31 +61,29 @@ colorCategory()
 
 // Filter
 
-$('#cb').css('display', 'none')
-
-$('#filter-form').submit(e => {
-    e.preventDefault()
-    $('#cb').val(verifyCheckBox())
-    $.ajax({
-        url: 'dashboard/filter',
-        method: 'post',
-        data: $('#filter-form').serialize(),
-        success: response => {
-            //console.log(response)
-            $('.table').html(
-                $(response).filter('.table').html()
-            )
-            colorCategory()
-        }
+function filterForm() {
+    $('#filter-form').submit(e => {
+        e.preventDefault()
+        $('#cb').val(verifyCheckBox())
+        $.ajax({
+            url: 'dashboard/filter',
+            method: 'post',
+            data: $('#filter-form').serialize(),
+            success: response => {
+                $('.table').html($(response).filter('.table').html())
+                colorCategory()
+            }
+        })
     })
-})
+}
+
+filterForm()
 
 // Functions
 
-let cbIncome = document.querySelector('#cb-income')
-let cbExpense = document.querySelector('#cb-expense')
-
 function verifyCheckBox() {
+    let cbIncome = document.querySelector('#cb-income')
+    let cbExpense = document.querySelector('#cb-expense')
     if (cbIncome.checked && cbExpense.checked) return 'both'
     if (cbIncome.checked && !cbExpense.checked) return 'income'
     if (cbExpense.checked && !cbIncome.checked) return 'expense'
@@ -83,24 +92,26 @@ function verifyCheckBox() {
 
 // Search
 
-$('#inptSearch').keyup(e => {
-    $('#cb-income').prop('checked', true)
-    $('#cb-expense').prop('checked', true)
-    document.querySelectorAll('.selected')[0].classList.add('first')
-    document.querySelectorAll('.selected')[1].classList.add('scnd')
-    $('.first').text('Tag')
-    $('.scnd').text('Order')
-    search($(e.target).val())
-})
+function search() {
+    $('#inptSearch').keyup(e => {
+        $('#cb-income').prop('checked', true)
+        $('#cb-expense').prop('checked', true)
+        document.querySelectorAll('.selected')[0].classList.add('first')
+        document.querySelectorAll('.selected')[1].classList.add('scnd')
+        $('.first').text('Tag')
+        $('.scnd').text('Order')
+        getSearch($(e.target).val())
+    })
+}
 
-const search = (query = '') => {
+search()
+
+function getSearch(query = '') {
     $.ajax({
         url: query != '' ? `dashboard/search/?query=${query}` : `dashboard/nonSearch`,
         method: 'get',
         success: response => {
-            $('.table').html(
-                $(response).filter('.table').html()
-            )
+            $('.table').html($(response).filter('.table').html())
             colorCategory()
         }
     })

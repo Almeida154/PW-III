@@ -591,3 +591,7 @@ form button {
     font-family: Quick-Bold !important;
     opacity: .7 !important;
 }
+
+#cb {
+    display: none;
+}
