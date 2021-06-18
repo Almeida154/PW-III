@@ -21,15 +21,15 @@
                     <h3>Hello!</h3>
                     <form id="formStart" autocomplete="off">
                         <div id="form-container">
-                            <input type="text" placeholder="Name" name="name">
-                            <input type="text" placeholder="Email" name="email">
-                            <input type="password" placeholder="Password" name="password">
+                            <input maxlength="40" type="text" placeholder="Name" name="name">
+                            <input maxlength="40" type="text" placeholder="Email" name="email">
+                            <input maxlength="40" type="password" placeholder="Password" name="password">
                             <button type="submit">Sign Up</button>
                         </div>
                     </form>
                     <p>Have an account? 
                         <span>
-                            <a href="signIn.html">Sign in</a>
+                            <a href="signIn">Sign in</a>
                         </span>
                     </p>
                 </div>

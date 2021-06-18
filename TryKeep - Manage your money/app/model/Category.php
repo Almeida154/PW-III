@@ -27,4 +27,17 @@ class Category {
         return $category['id'];
     }
 
+    function findByCategoryName($category) {
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE category = :category';
+        $param = [':category' => $category];
+        return $this->pdo->executeQuery($sql, $param);
+    }
+
+    private function collection($param) {
+        return (Object) [
+            'id' => $param['id'] ?? null,
+            'category' => $param['category'] ?? null,
+        ];
+    }
+
 }

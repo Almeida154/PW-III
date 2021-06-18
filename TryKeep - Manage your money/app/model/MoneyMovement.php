@@ -116,17 +116,54 @@ class MoneyMovement {
         return $allList;
     }
 
-    function getTotalAmount() {
+    function getTotalAmount($id) {
         $sql = 'SELECT SUM(amount) FROM ' . $this->table . 'WHERE category_id = ' . $this->category;
-        $totalAmount = $this->pdo->executeQuery($sql, null, true);
+        $param = [':id' => $id];
+        $totalAmount = $this->pdo->executeQuery($sql, $param, true);
         return $this->collection($totalAmount);
     }
 
-    function getTotalAmountByTag($tag_id) {
-        $sql = 'SELECT SUM(amount) FROM ' . $this->table . ' WHERE $tag_id = :$tag_id';
-        $param = [':tag_id' => $tag_id];
-        $totalAmount = $this->pdo->executeQuery($sql, $param, true);
-        return $this->collection($totalAmount);
+    function getMoreExpensive($user_id) {
+        $sql = 'SELECT MAX(amount) as amount FROM ' . $this->table . ' WHERE user_id = :user_id';
+        $param = [':user_id' => $user_id];
+        return $this->pdo->executeQuery($sql, $param, true)['amount'];
+    }
+
+    function getLessExpensive($user_id) {
+        $sql = 'SELECT MIN(amount) as amount FROM ' . $this->table . ' WHERE user_id = :user_id';
+        $param = [':user_id' => $user_id];
+        return $this->pdo->executeQuery($sql, $param, true)['amount'];
+    }
+
+    function getByAmount($user_id, $amount) {
+        $sql = 'SELECT title, description, amount, tag, date FROM ' . $this->table . ' 
+                    INNER JOIN tbtag on tbtag.id = tbmoneymovement.tag_id
+                            WHERE user_id = :user_id AND amount LIKE :amount';
+        $params = [
+            ':user_id' => $user_id,
+            ':amount' => $amount
+        ];
+        return $this->collectionList($this->pdo->executeQuery($sql, $params, true));
+    }
+
+    function getTotalAmountByTag($user_id, $tag_id) {
+        $sql = 'SELECT SUM(amount) as sum FROM ' . $this->table . '
+                    WHERE user_id = :user_id AND tag_id = :tag_id';
+        $params = [
+            ':user_id' => $user_id,
+            ':tag_id' => $tag_id
+        ];
+        return $this->pdo->executeQuery($sql, $params, true)['sum'];
+    }
+
+    function getTotalAmountByCategory($user_id, $category_id) {
+        $sql = 'SELECT SUM(amount) as sum FROM ' . $this->table . '
+                    WHERE user_id = :user_id AND category_id = :category_id';
+        $params = [
+            ':user_id' => $user_id,
+            ':category_id' => $category_id
+        ];
+        return $this->pdo->executeQuery($sql, $params, true)['sum'];
     }
 
     function getList($user_id, $field) {

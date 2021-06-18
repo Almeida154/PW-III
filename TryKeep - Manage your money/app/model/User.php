@@ -38,6 +38,12 @@ class User {
         return $this->pdo->executeNonQuery($sql, $params);
     }
 
+    function delete($id) {
+        $sql = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+        $param = [':id' => $id];
+        return $this->pdo->executeNonQuery($sql, $param);
+    }
+
     function all() {
         $sql = 'SELECT * FROM ' . $this->table;
         $users = $this->pdo->executeQuery($sql);

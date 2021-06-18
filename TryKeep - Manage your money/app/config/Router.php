@@ -22,14 +22,24 @@ $this->post('/signUp/validateEmail', 'DatabaseController@validateEmail');
 $this->post('/signIn/validateSignIn', 'DashboardController@signIn');
 $this->post('/dashboard', 'DashboardController@dashboard');
 $this->post('/dashboard/logout', 'DashboardController@logOut');
-$this->post('/dashboard/filter', 'DashboardController@filter');
-
-// [Search] //
-$this->get('/dashboard/search', 'DashboardController@search');
-$this->get('/dashboard/nonSearch', 'DashboardController@nonSearch');
 
 // [Navigation] //
-$this->post('/dashboard/home', 'DashboardController@home');
-$this->post('/dashboard/stats', 'DashboardController@stats');
-$this->post('/dashboard/new', 'DashboardController@new');
-$this->post('/dashboard/config', 'DashboardController@config');
+$this->get('/dashboard/home', 'DashboardController@home');
+$this->get('/dashboard/stats', 'DashboardController@stats');
+$this->get('/dashboard/new', 'DashboardController@new');
+$this->get('/dashboard/config', 'DashboardController@config');
+
+// [Home] //
+$this->get('/dashboard/search', 'DashboardController@search');
+$this->get('/dashboard/nonSearch', 'DashboardController@nonSearch');
+$this->post('/dashboard/filter', 'DashboardController@filter');
+
+// [Stats] //
+$this->post('/dashboard/stats/chart', 'DashboardController@renderChart');
+
+// [New] //
+$this->post('/dashboard/new/newMM', 'DatabaseController@insertMM');
+
+// [Config] //
+$this->post('/dashboard/config/update', 'DatabaseController@updateUser');
+$this->post('/dashboard/config/delete', 'DatabaseController@deleteUser');

@@ -13,6 +13,6 @@
 
 <p class="steps-link">Have an account? 
     <span>
-        <a href="signIn.html">Sign in</a>
+        <a href="signIn">Sign in</a>
     </span>
 </p>

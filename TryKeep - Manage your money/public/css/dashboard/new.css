@@ -1,0 +1,84 @@
+.new {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 50px;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px #0000001a;
+    border-radius: 16px;
+    color: #8b8b8b;
+    transition: .6s;
+    min-height: 499px;
+}
+
+hr {
+    margin: 10px 0px 16px;
+    border: 1px solid #8b8b8b18;
+}
+
+.container-new-form {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .6s;
+}
+
+form {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 420px;
+}
+
+input[type='text'], form button, textarea {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px 16px;
+    border: none;
+    background-color: #F0F0F0;
+    font-family: Quick-Bold;
+    font-size: 16px;
+    color: #8b8b8b;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+form button {
+    box-sizing: content-box;
+    background-color: #b8b8b8;
+    color: #777777;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+form textarea {
+    height: 60px;
+    resize: none;
+}
+
+input[type='text']:hover {
+    background-color: #e9e9e9;
+}
+
+@media(max-width: 530px) {
+    .container-new-form {
+        padding: 20px 0px;
+    }
+}
+
+@media(max-width: 500px) {
+    .new {
+        padding: 50px 20px;
+    }
+}
+
+h5 {
+    color: #8b8b8baf
+}
+
+#hiddenAmount {
+    display: none;
+}
+
+.explain-add {
+    margin-bottom: 10px;
+}

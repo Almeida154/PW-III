@@ -28,7 +28,7 @@
 
                     <p>New here?
                         <span>
-                            <a href="signUp.html">Sign up</a>
+                            <a href="signUp">Sign up</a>
                         </span>
                     </p>
                 </div>

@@ -1,51 +1,6 @@
-'use strict';
 
-// Toggle
-
-var btnMobile = document.querySelector('#btn-mobile')
-var sticky = document.querySelector('.sticky-sidebar')
-var nav = document.querySelector('#nav')
-
-btnMobile.addEventListener('click', toggleMenu)
-
-function toggleMenu(event) {
-    let elements = [sticky, nav]
-    elements.map(elem => elem.classList.toggle('active'))
-    if(elements[1].classList.contains('active')) {
-        event.currentTarget.setAttribute('aria-expanded', 'true')
-        event.currentTarget.setAttribute('aria-label', 'Close Menu')
-        return
-    }
-    event.currentTarget.setAttribute('aria-expanded', 'false')
-    event.currentTarget.setAttribute('aria-label', 'Open Menu')
-}
-
-// Navigation
-
-$('.container-navigation').each(function () {
-    $(this).on("click", function(){
-        console.log($(this).attr('section'));
-        removeNavigationClasses()
-        getSection($(this).attr('section'))
-        $(this).addClass('active')
-    });
-})
-
-function removeNavigationClasses() {
-    $('.container-navigation').each(function() {
-        $(this).removeClass('active')
-    })
-}
-
-function getSection(section) {
-    $.ajax({
-        url: `dashboard/${section}`,
-        type: 'post',
-        success: response => {
-            $('.content-container').html($(response).find('.content-container').html())
-        }
-    })
-}
+const activeNavigation = document.querySelectorAll('.container-navigation')[0]
+activeNavigation.classList.add('activeContainer')
 
 // Category Color
 
@@ -66,7 +21,7 @@ function filterForm() {
         e.preventDefault()
         $('#cb').val(verifyCheckBox())
         $.ajax({
-            url: 'dashboard/filter',
+            url: 'filter',
             method: 'post',
             data: $('#filter-form').serialize(),
             success: response => {
@@ -107,8 +62,9 @@ function search() {
 search()
 
 function getSearch(query = '') {
+    let url = '//localhost/PW-III/TryKeep - Manage your money/public/dashboard'
     $.ajax({
-        url: query != '' ? `dashboard/search/?query=${query}` : `dashboard/nonSearch`,
+        url: query != '' ? `${url}/search/?query=${query}` : `${url}/nonSearch`,
         method: 'get',
         success: response => {
             $('.table').html($(response).filter('.table').html())

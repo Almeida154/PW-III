@@ -16,14 +16,16 @@ class DatabaseController extends Controller {
     private $expenseTag;
     private $incomeTag;
 
+    private $category;
+
     function __construct() {
-        $tbCategory = new Category(TB_CATEGORY);
+        $this->category = new Category(TB_CATEGORY);
         $this->user = new User(TB_USER);
-        $this->income = new MoneyMovement(TB_MONEY_MOVEMENT, $tbCategory->getIncomeId());
-        $this->expense = new MoneyMovement(TB_MONEY_MOVEMENT, $tbCategory->getExpenseId());
-        $this->incomeTag = new Tag(TB_TAG, $tbCategory->getIncomeId());
-        $this->expenseTag = new Tag(TB_TAG, $tbCategory->getExpenseId());
-        $this->initialize();
+        $this->income = new MoneyMovement(TB_MONEY_MOVEMENT, $this->category->getIncomeId());
+        $this->expense = new MoneyMovement(TB_MONEY_MOVEMENT, $this->category->getExpenseId());
+        $this->incomeTag = new Tag(TB_TAG, $this->category->getIncomeId());
+        $this->expenseTag = new Tag(TB_TAG, $this->category->getExpenseId());
+        session_start();
     }
 
     // Crud
@@ -40,6 +42,40 @@ class DatabaseController extends Controller {
         $this->response($json);
     }
 
+    function updateUser() {
+        $this->user->update((Object) array(
+            'id' => $_SESSION['id'],
+            'name' => Input::post('name'),
+            'email' => Input::post('email'),
+            'password' => Input::post('password')
+        ));
+    }
+
+    function deleteUser() {
+        $this->user->delete($_SESSION['id']);
+        session_destroy();
+        sentinel();
+    }
+
+    function insertMM() {
+        if (Input::post('tag') == null) {
+            echo 'empty';
+            return;
+        }
+        $obj = (Object) array(
+            'user_id' => $_SESSION['id'],
+            'title' => Input::post('title'),
+            'tag_id' => (new Tag(TB_TAG, null))->findByTagName(Input::post('tag'))[0]->id,
+            'category_id' => (new Tag(TB_TAG, null))->findByTagName(Input::post('tag'))[0]->category_id,
+            'amount' => Input::post('hiddenAmount'),
+            'description' => Input::post('description')
+        );
+        if ((new Tag(TB_TAG, null))->findByTagName(Input::post('tag'))[0]->category_id == $this->category->getIncomeId()) return $this->income->insert($obj);
+        return $this->expense->insert($obj);
+    }
+
+    // Functions
+
     function validateEmail() {
         $data = Input::post('email');
         if ($this->user->countRowsByEmail($data) > 0) { 
@@ -48,8 +84,6 @@ class DatabaseController extends Controller {
         }
         echo 'true';
     }
-
-    // Functions
 
     private function initialize() {       
         $this->incomeTag->insert('Monthly Income');

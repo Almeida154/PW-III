@@ -26,7 +26,7 @@
             {% endfor %}
         {% else %}
             <div id="not-found">
-                <img src="../public/svg/iconNotFound.svg" alt="">
+                <img src="//localhost/{{BASE}}/public/svg/iconNotFound.svg" alt="">
                 <p>Not Found :/</p>
             </div>
         {% endif %}
@@ -34,4 +34,4 @@
 </body>
 </html>
 
-<script type="module" src="../public/js/dashboard.js"></script>
+<script type="module" src="//localhost/{{BASE}}/public/js/dashboard.js"></script>
