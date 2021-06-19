@@ -25,3 +25,45 @@ function signIn(e) {
     }
     sweetAlert(`Don't forget any field!`, false)
 }
+
+// Forgot Password
+
+$('#forgotPassword').click(e => forgot())
+
+function forgot() {
+    $.get('signIn/forgotPassword').done(response => {
+        $('#helper').html(response)
+        $('#back').click(() => back())
+        $('#forgotForm').submit(e => forgotPassword(e))
+    })
+}
+
+function forgotPassword(e) {
+    e.preventDefault()
+    const { email } = forgotForm
+    if (email.value != '') {
+        $.ajax({
+            url: 'signIn/getPassword',
+            type: 'post',
+            data: $('#forgotForm').serialize(),
+            success: response => {
+                if (response == '-1') {
+                    sweetAlert(`No accounts found`)
+                    return
+                }
+                sweetAlert(`Email successfully sent`, true)
+                return
+            }
+        })
+        return
+    }
+    sweetAlert(`Fill in with your email`)
+}
+
+function back() {
+    $.get('signIn').done(response => {
+        $('#helper').html($(response).find('#helper').children())
+        $('#signInForm').submit(e => signIn(e))
+        $('#forgotPassword').click(e => forgot())
+    })
+}

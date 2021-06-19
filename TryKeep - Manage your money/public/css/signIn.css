@@ -1,3 +1,18 @@
+#helper {
+    min-height: 370px;
+    max-height: 370px;
+    box-sizing: border-box;
+}
+
+.steps-title {
+    font-size: 20px !important;
+    animation: rightElements .4s .4s backwards !important;
+}
+
+.steps-form {
+    animation: rightElements .4s .6s backwards !important;
+}
+
 @media(max-width: 680px) {
     #icon {
         margin-right: -10%;
@@ -41,3 +56,12 @@
     }
 }
 
+#forgotPassword {
+    cursor: pointer;
+    text-align: center;
+}
+
+i {
+    cursor: pointer;
+    padding-right: 6px;
+}

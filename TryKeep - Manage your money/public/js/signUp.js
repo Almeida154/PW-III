@@ -37,7 +37,7 @@ async function start(e) {
 // Step 2
 function income(e) {
     e.preventDefault()
-    const { income } = formIncome
+    const { income } = incomeForm
     if (income.value != ''){
         ajaxExpense()
         user.income = parseFloat(income.value.slice(3).replace(/\./g,'').replace(',', '.'))
@@ -49,7 +49,7 @@ function income(e) {
 // Step 3
 function expense(e) {
     e.preventDefault()
-    const { expense } = formExpense
+    const { expense } = expenseForm
     if (expense.value != ''){
         ajaxInfo()
         user.expense = parseFloat(expense.value.slice(3).replace(/\./g,'').replace(',', '.'))
@@ -77,7 +77,7 @@ function ajaxIncome() {
     $.get('accountSteps/income').done(response => {
         $('#helper').html(response)
         $('#income-back').click(() => back('start'))
-        $('#formIncome').submit(e => income(e))
+        $('#incomeForm').submit(e => income(e))
         currencyMask($('#inputIncome'))
     })
 }
@@ -86,7 +86,7 @@ function ajaxExpense() {
     $.get('accountSteps/expense').done(response => {
         $('#helper').html(response)
         $('#expense-back').click(() => back('income'))
-        $('#formExpense').submit(e => expense(e))
+        $('#expenseForm').submit(e => expense(e))
         currencyMask($('#inputExpense'))
     })
 }
@@ -98,7 +98,7 @@ function ajaxInfo() {
         $('#info-back').click(() => back('expense'))
         $('#inputUser').css('display', 'none')
         $('#inputUser').val(JSON.stringify(user))
-        $('#formInfo').submit(e => info(e))
+        $('#infoForm').submit(e => info(e))
     })
 }
 
@@ -106,7 +106,7 @@ function ajaxRegister() {
     $.ajax({
         url: 'signUp/newUser',
         type: 'POST',
-        data: $('#formInfo').serialize(),
+        data: $('#infoForm').serialize(),
         success: response => {
             console.log(response);
             sweetAlert(`${capitalize(firstName(response.name))}, your registration was successful`, true)

@@ -4,17 +4,47 @@ import { sweetAlert } from '../functions/util.js'
 const activeNavigation = document.querySelectorAll('.container-navigation')[1]
 activeNavigation.classList.add('activeContainer')
 
+// First render
+
 var tag = 'Monthly Expense'
-var category = 'Expense'
 
-var tagAmount = document.getElementById('tagAmount').innerHTML
-var categoryAmount = document.getElementById('categoryAmount').innerHTML
+var tagAmount = parseFloat(document.getElementById('tagAmount').innerHTML)
+var categoryAmount = parseFloat(document.getElementById('categoryAmount').innerHTML)
 
-// Chart
+var other = document.getElementById('other')
+var otherAmount = document.createTextNode((categoryAmount - tagAmount))
+other.appendChild(otherAmount)
+
+setFormat(categoryAmount, tagAmount)
+
+// Drawing
 
 var ctx = document.getElementById('myChart').getContext('2d');
-ctx.width = 500;
-ctx.height = 500;
+
+var options = {
+    plugins: {
+        legend: {
+            position: 'bottom',
+            labels: { padding: 30 }
+        },
+    },
+}
+
+var data = {
+    labels: [tag, 'Other'],
+    datasets: [{
+        data: [tagAmount, categoryAmount - tagAmount],
+        backgroundColor: ['#FCB9B2', '#9F3541'],
+    }]
+}
+
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options,
+})
+
+// Rendering a new chart
 
 $('#chartForm').submit(e => {
     e.preventDefault()
@@ -26,62 +56,43 @@ $('#chartForm').submit(e => {
             if (response == 'empty') return sweetAlert(`Select a tag`, false)
             $('.chart-data').html($(response).filter('.chart-data').html())
 
-            tagAmount = $(response).find('#tagAmount').text()
-            categoryAmount = $(response).find('#categoryAmount').text()
-
-            tag = $(response).find('#tagAmount').attr('tag')
-            category = $(response).find('#categoryAmount').attr('category')
-
-            myChart.destroy();
-
-            data.labels = [tag, category];
-            data.datasets = [{
-                label: 'points',
-                backgroundColor: ['#FCB9B2', '#9F3541'],
-                data: [parseInt(tagAmount), (parseInt(categoryAmount) - parseInt(tagAmount))]
-            }]
+            initializeChart(response)
 
             myChart = new Chart(ctx, {
                 type: 'pie',
-                options: options,
-                data: data 
+                data: data,
+                options: options
             })
         }
     })
 })
 
-// Drawing
+// Functions
 
-var options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    tooltips: { enabled: false },
-    plugins: {
-        datalabels: {
-            formatter: (value, ctx) => {
-                let sum = 0;
-                let dataArr = ctx.chart.data.datasets[0].data;
-                dataArr.map(data => {
-                    sum += data;
-                });
-                let percentage = (value * 100 / sum).toFixed(2)+"%";
-                return percentage;
-            },
-            color: '#fff',
-        }
-    }
+function formatCurrency(value, n, x, s, c) {
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+        num = value.toFixed(Math.max(0, ~~n));
+    return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
 }
 
-var data = [{
-    labels: [tag, category],
-    data: [parseInt(tagAmount), (parseInt(categoryAmount) - parseInt(tagAmount))],
-    backgroundColor: ['#FCB9B2', '#9F3541'],
-}]
+function setFormat(categoryAmount, tagAmount) {
+    $('#other').text('R$ ' + formatCurrency(categoryAmount - tagAmount, 2, 3, '.', ','))
+    $('#tagAmount').text('R$ ' + formatCurrency(parseFloat(tagAmount), 2, 3, '.', ','))
+    $('#categoryAmount').text('R$ ' + formatCurrency(parseFloat(categoryAmount), 2, 3, '.', ','))
+}
 
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        datasets: data
-    },
-    options: options,
-})
+function initializeChart(response) {
+    tagAmount = $(response).find('#tagAmount').text()
+    categoryAmount = $(response).find('#categoryAmount').text()
+    tag = $(response).find('#tagAmount').attr('tag')
+
+    myChart.destroy();
+
+    data.labels = [tag, 'Other'];
+    data.datasets = [{
+        backgroundColor: ['#FCB9B2', '#9F3541'],
+        data: [tagAmount, (categoryAmount - tagAmount)]
+    }]
+
+    setFormat(categoryAmount, tagAmount)
+}

@@ -78,7 +78,7 @@
 
 .filter {
     width: 40%;
-    max-height: 450px;
+    max-height: 480px;
     border-radius: 16px;
     background-color: white;
     padding: 20px;
@@ -238,4 +238,13 @@ form button {
 
 #cb {
     display: none;
+}
+
+#pdf {
+    margin-top: 28px;
+    width: 100%;
+    text-align: center;
+    float: left;
+    color: #d4d4d498;
+    text-decoration: underline;
 }

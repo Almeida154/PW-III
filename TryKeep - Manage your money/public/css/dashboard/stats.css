@@ -1,4 +1,4 @@
-.stats-more-less, .chart-container {
+.stats-more-less, .filter-container {
     box-sizing: border-box;
     width: 100%;
     padding: 50px;
@@ -8,6 +8,16 @@
     border-radius: 16px;
     color: #8b8b8b;
     transition: .6s;
+}
+
+.filter-container {
+    padding-bottom: 90px;
+}
+
+.filter-container h3 {
+    font-size: 22px;
+    transition: .6s;
+    margin-bottom: 16px;
 }
 
 .stats-more-less {
@@ -62,6 +72,77 @@ form button {
     transition: .3s
 }
 
+.chart-wrapper {
+    display: flex;
+    gap: 20px;
+    transition: .6s;
+}
+
 .chart {
-    margin-top: 30px;
+    width: 60%;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px #0000001a;
+    color: #8b8b8b;
+    border-radius: 16px;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: .6s;
+}
+
+.chart-data {
+    height: min-content;
+    width: 40%;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px #0000001a;
+    color: #8b8b8b;
+    border-radius: 16px;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: .6s;
+}
+
+.chart-data p {
+    color: #b4b4b4;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding-left: 8px;
+}
+
+hr {
+    margin: 10px 0px 16px;
+    border: 1px solid #8b8b8b18;
+}
+
+#myChart {
+    padding: 20px;
+    transition: .6s;
+}
+
+@media(max-width: 750px) {
+    .chart-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .chart {
+        order: 2;
+        width: 100%;
+        padding: 30px;
+    }
+    .chart-data {
+        order: 1;
+        width: 100%;
+        padding: 30px;
+        transition: .6s;
+    }
+}
+
+@media(max-width: 570px) {  
+    #myChart {
+        padding: 0px;
+    } 
+    .chart-data {
+        width: 100%;
+        padding: 30px;
+        transition: .6s;
+    }
 }

@@ -80,6 +80,7 @@
                 <input id="cb" name="cb" type="text">
                 <button type="submit">Filter</button>
             </form>
+            <a id="pdf" target="_blank" href="//localhost/{{BASE}}/public/dashboard/pdf">Generate Pdf</a>
         </div>
     </div>
 {% endblock %}

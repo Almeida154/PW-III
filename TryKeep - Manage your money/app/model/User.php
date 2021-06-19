@@ -58,6 +58,12 @@ class User {
         return $this->pdo->executeQuery($sql, $param, true);
     }
 
+    function findByEmail($email) {
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE email = :email';
+        $param = [':email' => $email];
+        return $this->collection($this->pdo->executeQuery($sql, $param, true));
+    }
+
     function signIn($email, $password) {
         $sql = 'SELECT * FROM ' . $this->table . ' WHERE email = :email AND password = :password';
         $params = [

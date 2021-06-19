@@ -3,6 +3,7 @@
 namespace app\controller;
 use app\core\Controller;
 use app\classes\Input;
+use Dompdf\Dompdf;
 use app\model\User;
 use app\model\MoneyMovement;
 use app\model\Tag;
@@ -160,6 +161,20 @@ class DashboardController extends Controller {
         $categoryAmount = $mm->getTotalAmountByCategory($_SESSION['id'], $expenseId);
         return ['tagAmount' => $tagAmount, 'categoryAmount' => $categoryAmount,
         'category' => 'Expense', 'tag' => $tag];
+    }
+
+    function pdf() {
+        sentinel();
+        $dompdf = new Dompdf(['enable_remote' => true]);
+        ob_start();
+        $this->render('dashboard/pdf', [
+            'date' => date('Y-m-d H:i:s'),
+            'list' => $this->getAllMoneyMovements($_SESSION['id'], 'date')
+        ]);
+        $dompdf->loadHtml(ob_get_clean());
+        $dompdf->setPaper('A4');
+        $dompdf->render();
+        $dompdf->stream('MoneyMovement.pdf', ['Attachment' => false]);
     }
 
     //  Functions

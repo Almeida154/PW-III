@@ -1,6 +1,7 @@
 {% extends 'template/main.twig.php' %}
 
 {% block head %}
+    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <link rel="stylesheet" href="../public/css/form.css">
     <link rel="stylesheet" href="../public/css/signIn.css">
     <title>TryKeep | Sign In</title>
@@ -20,17 +21,17 @@
                     <h3>Hi :)</h3>
                     <form id="signInForm">
                         <div id="form-container">
-                            <input id="emailInput" value="alameda@gmail.com" type="text" name="email" placeholder="Email">
-                            <input value="bgk35670" type="password" name="password" placeholder="Password">
+                            <input id="emailInput" type="text" name="email" placeholder="Email">
+                            <input type="password" name="password" placeholder="Password">
                             <button type="submit">Sign In</button>
                         </div>
                     </form>
-
                     <p>New here?
                         <span>
                             <a href="signUp">Sign up</a>
                         </span>
                     </p>
+                    <p id="forgotPassword"><a>I forgot my password</a></p>
                 </div>
             </div>
         </div>

@@ -32,4 +32,8 @@ class GeneralController extends Controller {
     function info() {
         $this->render('accountSteps/info');
     }
+
+    function forgot() {
+        $this->render('accountSteps/forgotPassword');
+    }
 }

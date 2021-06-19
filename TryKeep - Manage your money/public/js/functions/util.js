@@ -21,7 +21,8 @@ export function capitalizeAll(str) {
 }
 
 export function firstName(str) {
-    return str.split(' ')[0];
+    if (str.includes(' ')) return str.split(' ')[0];
+    return str;
 }
 
 export function sweetAlert(title, status) {

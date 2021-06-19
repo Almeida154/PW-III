@@ -22,6 +22,8 @@ $this->post('/signUp/validateEmail', 'DatabaseController@validateEmail');
 $this->post('/signIn/validateSignIn', 'DashboardController@signIn');
 $this->post('/dashboard', 'DashboardController@dashboard');
 $this->post('/dashboard/logout', 'DashboardController@logOut');
+$this->get('/signIn/forgotPassword', 'GeneralController@forgot');
+$this->post('/signIn/getPassword', 'DatabaseController@sendPassword');
 
 // [Navigation] //
 $this->get('/dashboard/home', 'DashboardController@home');
@@ -43,3 +45,6 @@ $this->post('/dashboard/new/newMM', 'DatabaseController@insertMM');
 // [Config] //
 $this->post('/dashboard/config/update', 'DatabaseController@updateUser');
 $this->post('/dashboard/config/delete', 'DatabaseController@deleteUser');
+
+
+$this->post('/dashboard/pdf', 'DashboardController@pdf');

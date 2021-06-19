@@ -3,6 +3,7 @@
 namespace app\controller;
 use app\core\Controller;
 use app\classes\Input;
+use app\classes\PHPMailer;
 use app\model\User;
 use app\model\MoneyMovement;
 use app\model\Tag;
@@ -38,7 +39,13 @@ class DatabaseController extends Controller {
         $user_id = $this->user->insert(json_decode($json));
         $this->firstIncome($user_id, json_decode($json));
         $this->firstExpense($user_id, json_decode($json));
-        
+
+        $this->sendEmail(
+            json_decode($json)->email,
+            "Be welcome, " . json_decode($json)->name,
+            "We're glad that you have become part of the family. We hope you have a good experience."
+        );
+
         $this->response($json);
     }
 
@@ -75,6 +82,42 @@ class DatabaseController extends Controller {
     }
 
     // Functions
+
+    function sendEmail($email, $subject, $body) {
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->CharSet = 'UTF-8';
+        $mail->SMTPAuth = true;
+
+        $mail->Username = 'trykeep2021@gmail.com';
+        $mail->Password = 'bgk35670';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+
+        $mail->setFrom('trykeep2021@gmail.com', 'TRYKEEP');
+        $mail->singleTo = true;
+
+        $mail->addAddress($email);
+        $mail->Subject = $subject;
+        $mail->Body = $body;
+
+        if(!$mail->Send()) {
+            dd($mail->ErrorInfo);
+        }
+    }
+
+    function sendPassword() {
+        $email = Input::post('email');
+        $user = $this->user->findByEmail($email);
+        $name = $user->name;
+        $password = $user->password;
+        if ($this->user->countRowsByEmail($email) > 0) {
+            $this->sendEmail($email, "Password Recovery", "Hello, " . $name . ". Your password is: " . $password);
+            return;
+        }
+        echo -1;
+    }
 
     function validateEmail() {
         $data = Input::post('email');
