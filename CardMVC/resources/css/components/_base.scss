@@ -1,0 +1,11 @@
+@import 'card';
+
+.card-container {
+    @include flex();
+    height: 100vh;
+    .card {
+        p {
+            font-size: 5rem;
+        }
+    }
+}
