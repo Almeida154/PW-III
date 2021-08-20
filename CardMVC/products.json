@@ -1,0 +1,70 @@
+[{
+    "name": "Barcelona Shirt",
+    "price": 129,
+    "description": "Futbol Club Barcelona, tambem conhecido como Barcelona e popularmente como Barça, é um clube de futebol profissional, com sede em Barcelona, Catalunha. Para a temporada 2020/2021, a equipe joga a La Liga, na Espanha. Fundado em 1899 por um grupo de futebolistas suicos, ingleses e catalaes.",
+    "league": "La Liga",
+    "colors": [
+        { "color": "#1e2d72" },
+        { "color": "#9a202f" },
+        { "color": "#f7c443" }
+    ],
+    "image": "barcelona"
+},
+{
+    "name": "PSG Shirt",
+    "price": 149,
+    "description": "O Paris Saint-Germain Football Club, tambem conhecido como Paris Saint-Germain ou pela sua sigla 'PSG', e um clube de futebol profissional da França com sede em Paris. Suas cores sao as cores tradicionais da cidade de Paris, o azul e o vermelho, e de Saint-Germain, distrito nos arredores de Paris, branco.",
+    "league": "Ligue 1",
+    "colors": [
+        { "color": "#e8e8ed" },
+        { "color": "#e42c2d" },
+        { "color": "#16429e" }
+    ],
+    "image": "psg"
+},
+{
+    "name": "Real Madrid Shirt",
+    "price": 99,
+    "description": "O Real Madrid Club de Futbol, mais conhecido como Real Madrid ou simplesmente Real, é um clube polidesportivo espanhol, com sede em Madrid. Foi fundado oficialmente no dia 6 de março de 1902 pelos irmaos Juan Padros e Carlos Padros, com o nome de Madrid Foot-Ball Club.",
+    "league": "La Liga",
+    "colors": [
+        { "color": "#cacacb" },
+        { "color": "#d7737c" }
+    ],
+    "image": "realmadrid"
+},
+{
+    "name": "Manchester City Shirt",
+    "price": 145,
+    "description": "Manchester City Football Club e um clube de futebol ingles, que disputa a Premier League, tendo sido fundado em 1880. Foi entao nomeado FC St.",
+    "league": "Premier League",
+    "colors": [
+        { "color": "#eeedf2" },
+        { "color": "#1698a5" },
+        { "color": "#c76087" }
+    ],
+    "image": "city"
+},
+{
+    "name": "São Paulo Shirt",
+    "price": 109,
+    "description": "Sao Paulo Futebol Clube e uma associacao esportiva brasileira da cidade de Sao Paulo, capital do estado homonimo. Foi fundado em 25 de janeiro de 1930, tendo interrompido suas atividades em maio de 1935, e as retomado em dezembro do mesmo ano.",
+    "league": "Brasileira Serie A",
+    "colors": [
+        { "color": "#ebebf0" },
+        { "color": "#d22729" },
+        { "color": "#2c2b2e" }
+    ],
+    "image": "spfc"
+},
+{
+    "name": "Atletico Mineiro Shirt",
+    "price": 109,
+    "description": "O Clube Atletico Mineiro e um clube brasileiro de futebol sediado na cidade de Belo Horizonte, Minas Gerais. Considerado um dos mais populares clubes de futebol do Brasil, possui a décima maior torcida do pais.",
+    "league": "Brasileirao Serie A",
+    "colors": [
+        { "color": "#97958f" },
+        { "color": "#262627" }
+    ],
+    "image": "galo"
+}]

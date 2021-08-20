@@ -1,11 +1,8 @@
 @import 'card';
+@import 'fab';
 
 .card-container {
     @include flex();
+    position: relative;
     height: 100vh;
-    .card {
-        p {
-            font-size: 5rem;
-        }
-    }
 }
