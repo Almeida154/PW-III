@@ -180,3 +180,37 @@ a:hover{
     transform: translate3d(0, 0, 0);
     transition: .5s;
 }
+
+/* Alert */
+
+.swal2-timer-progress-bar { background-color: #12253f }
+.swal2-icon { overflow-y: hidden !important; overflow-x: hidden !important; }
+
+.swal2-popup{
+    background-color: #101F2E !important;
+    -webkit-box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.36) !important;
+    -moz-box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.36) !important;
+    box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.36) !important;
+}
+
+.swal2-icon.swal2-success [class^=swal2-success-line],
+.swal2-popup.swal2-toast .swal2-success {
+    background-color: #183153 !important;
+    border-color: #183153 !important;
+}
+
+.swal2-icon.swal2-error [class^=swal2-x-mark-line],
+.swal2-popup.swal2-toast .swal2-error {
+    border-color: #8C2F39 !important;
+}
+
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+    background-color: #8C2F39 !important;
+}
+
+.swal2-title {
+    font-size: 20px;
+    margin: 8px !important;
+    color: #243a5a !important;
+    font-family: Quick-Bold !important;
+}

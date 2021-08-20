@@ -5,7 +5,6 @@ const btnMobile = document.querySelector('#btn-mobile')
 const nav = document.querySelector('#nav')
 
 function toggleMenu(event) {
-
     nav.classList.toggle('active')
     if(nav.classList.contains('active')) {
         event.currentTarget.setAttribute('aria-expanded', 'true')
