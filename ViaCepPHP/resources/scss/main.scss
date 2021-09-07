@@ -1,0 +1,167 @@
+@import 'components/variables';
+@import 'components/font';
+@import 'components/reset';
+@import 'components/animation';
+@import 'components/functions';
+
+.main {
+    @include flex();
+    position: relative;
+    background-color: #f6f6f6;
+    min-height: 100vh;
+    overflow: hidden;
+
+    &__container {
+        @include flex();
+        z-index: 3;
+        width: 830px;
+        height: 460px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px 16px rgba(0, 0, 0, .1);
+        
+        .info {
+            @include flex();
+            background-image: url('../img/forest.png');
+            background-position: center center;
+            background-size: cover;
+            height: 100%;
+            flex: 1;
+            z-index: 10;
+            text-align: end;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+            &__main {
+                padding: 42px;
+                line-height: 100%;
+                color: #fff;
+
+                h1 {
+                    font-size: 4.6rem;
+                    margin-bottom: 32px;
+                    opacity: .8;
+                }
+
+                p {
+                    opacity: .4;
+                    font-size: 1rem;
+                    font-weight: 100;
+                }
+            }
+        }
+
+        .form {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            flex: 1;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            &__glass {
+                @include glass();
+                position: absolute;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                z-index: 5;
+            }
+
+            &__content {
+                @include flex();
+                position: absolute;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                z-index: 6;
+                padding: 22px;
+
+                h2 { font-size: 2rem; opacity: .8; margin-bottom: 40px; }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    width: 80%;
+                    
+                    .field {
+                        @include flex();
+                        gap: 16px;
+                    }
+
+                    .field + .field { margin-top: 10px; }
+
+                    input, button {
+                        flex: 1;
+                        font-family: Bubble;
+                        padding: 0 10px;
+                        font-size: 1rem;
+                        color: rgba(41, 41, 41, 0.795);
+                        border: none;
+                        outline: none;
+                        height: 40px;
+                        border-radius: 30px;
+                        box-shadow: 0 0 16px 6px rgba(0, 0, 0, .15);
+                    }
+
+                    button {
+                        @include flex();
+                        gap: 10px;
+                        padding: 10.5px 0;
+                        margin-top: 10px;
+                        width: 45%;
+                        align-self: flex-end;
+                        background-color: #292929;
+                        color: #f6f6f6;
+
+                        i { color: #f6f6f6; opacity: .8; }
+                    }
+
+                    i {
+                        color: #292929;
+                        width: 30px;
+                        font-size: 1.4rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .plant { position: absolute; }
+
+    .plant:nth-of-type(1) {
+        width: 400px;
+        bottom: -60px;
+        left: -110px;
+        z-index: 5;
+        opacity: .8;
+    }
+
+    .plant:nth-of-type(2) {
+        width: 400px;
+        bottom: 60px;
+        right: 0;
+        transform: rotate(-20deg);
+        opacity: .9;
+    }
+
+    .noise {
+        @include noise();
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+}
+
+.divisor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #292929;
+    height: 100%;
+    width: 45vw;
+    z-index: 1;
+}
