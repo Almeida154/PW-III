@@ -1,4 +1,3 @@
-@import 'components/variables';
 @import 'components/font';
 @import 'components/reset';
 @import 'components/animation';
@@ -18,7 +17,8 @@
         height: 460px;
         border-radius: 10px;
         box-shadow: 0 8px 16px 16px rgba(0, 0, 0, .1);
-        
+        transition: .3s;
+
         .info {
             @include flex();
             background-image: url('../img/forest.png');
@@ -30,6 +30,7 @@
             text-align: end;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
+            transition: .3s;
 
             &__main {
                 padding: 42px;
@@ -40,14 +41,18 @@
                     font-size: 4.6rem;
                     margin-bottom: 32px;
                     opacity: .8;
+                    transition: .3s;
                 }
 
                 p {
                     opacity: .4;
                     font-size: 1rem;
                     font-weight: 100;
+                    transition: .3s;
                 }
             }
+
+            @media (max-width: 867px) { border-radius: 0; }
         }
 
         .form {
@@ -57,6 +62,7 @@
             flex: 1;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
+            transition: .3s;
 
             &__glass {
                 @include glass();
@@ -67,6 +73,8 @@
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
                 z-index: 5;
+
+                @media (max-width: 867px) { border-radius: 0; }
             }
 
             &__content {
@@ -78,12 +86,13 @@
                 z-index: 6;
                 padding: 22px;
 
-                h2 { font-size: 2rem; opacity: .8; margin-bottom: 40px; }
+                h2 { font-size: 2rem; opacity: .8; margin-bottom: 40px; transition: .3s; }
 
                 form {
                     display: flex;
                     flex-direction: column;
                     width: 80%;
+                    transition: .3s;
                     
                     .field {
                         @include flex();
@@ -124,7 +133,39 @@
                         font-size: 1.4rem;
                         text-align: center;
                     }
+
+                    @media (max-width: 500px) { width: 100%; }
                 }
+            }
+
+            @media (max-width: 867px) { border-radius: 0; }
+        }
+
+        @media (max-width: 867px) {
+            width: 100%;
+            border-radius: 0;
+        }
+
+        @media (max-width: 660px) {
+            .info {
+                flex: 2;
+                align-items: flex-start;
+                &__main {
+                    text-align: start;
+                    padding: 22px;
+                    h1 { font-size: 3rem; margin-bottom: 14px; }
+                    p { font-size: .8rem; }
+                }
+            }
+            .form { flex: 5; }
+        }
+
+        @media (max-width: 430px) {
+            height: 100vh;
+            flex-direction: column;
+            .info { align-items: center; }
+            .form {
+                &__content { h2 { margin-bottom: 20px; } }
             }
         }
     }
@@ -137,6 +178,10 @@
         left: -110px;
         z-index: 5;
         opacity: .8;
+        transition: .3s;
+
+        @media (max-width: 867px) { width: 300px; bottom: -20px; opacity: .6; }
+        @media (max-width: 430px) { display: none; }
     }
 
     .plant:nth-of-type(2) {
@@ -164,4 +209,7 @@
     height: 100%;
     width: 45vw;
     z-index: 1;
+    transition: .3s;
+
+    @media (max-width: 660px) { width: 55vw; }
 }

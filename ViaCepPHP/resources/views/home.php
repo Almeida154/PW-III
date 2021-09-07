@@ -46,6 +46,7 @@
                 <div class="form__glass"></div>
             </div>
         </div>
+
         <div class="noise"></div>
         <img class="plant" src="resources/img/leaf.png" alt="">
         <img class="plant" src="resources/img/leaf2.png" alt="">
