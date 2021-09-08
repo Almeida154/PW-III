@@ -1,8 +1,29 @@
 {
-    "name": "viacep/php",
+    "name": "almeida154/viacepphp",
+    "description": "Usando a API pública: Viacep",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Almeida Santos",
+            "email": "davidalmeida154of@gmail.com",
+            "role": "Developer",
+            "homepage": "https://github.com/Almeida154"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "app/Config.php"
+        ]
+    },
+    "require": {
+        "coffeecode/router": "^1.0",
+        "league/plates": "^3.4"
     }
 }
