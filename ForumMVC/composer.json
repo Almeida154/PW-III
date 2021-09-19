@@ -1,0 +1,27 @@
+{
+    "name": "pwiii/forummvc",
+    "description": "Mvc de um forum com database",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Almeida",
+            "email": "davidalmeida154of@gmail.com",
+            "role": "Developer",
+            "homepage": "https://github.com/Almeida154"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Config.php"
+        ]
+    },
+    "require": {
+        "coffeecode/router": "^1.0",
+        "coffeecode/datalayer": "^1.1",
+        "league/plates": "^3.4"
+    }
+}

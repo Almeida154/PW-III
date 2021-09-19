@@ -1,0 +1,29 @@
+@mixin boundaries ($vertical: 0) {
+    padding: $vertical calc((100% - 1200px) / 2);
+}
+
+@mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin glass {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px 10px rgba(136, 136, 136, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+@mixin box-shadow($direction: right) {
+    @if $direction == right {
+        box-shadow: 15px 15px 10px 0 rgba(0, 0, 0, .1);
+    } @else if $direction == left {
+        box-shadow: -15px 15px 10px 0 rgba(0, 0, 0, .1);
+    } @else if $direction == bottom {
+        box-shadow: 0px 10px 10px 0 rgba(0, 0, 0, .05);
+    } @else {
+        box-shadow: 0 0 12px 4px rgba(0, 0, 0, .05);
+    }
+}
