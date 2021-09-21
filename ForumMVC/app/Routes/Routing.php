@@ -14,7 +14,7 @@ class Routing {
         $router->group(null);
         $router->get("/", "WebController:home");
         $router->get("/home", "WebController:home");
-        $router->get("/post/{post_id}", "WebController:home");
+        $router->get("/post/{post_id}", "WebController:post");
 
         $router->group("/ooops");
         $router->get("/{err_code}", "WebController:error");

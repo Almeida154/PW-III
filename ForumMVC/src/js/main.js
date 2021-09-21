@@ -1,5 +1,6 @@
 const header = document.querySelector('.header');
 const hero = document.querySelector('.hero');
+const cards = document.querySelectorAll('.posts__card');
 
 window.onscroll = () => {
     if (this.scrollY > 30) {
@@ -10,3 +11,10 @@ window.onscroll = () => {
         hero.classList.remove('sticky-hero');
     }
 }
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        let key = card.getAttribute('key');
+        window.location.href = `http://localhost/PW-III/ForumMVC/post/${key}`;
+    })
+});
