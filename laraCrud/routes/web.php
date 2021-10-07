@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\MainController;
+
+Route::get('/', [MainController::class, "home"]);
+Route::get('/home', [MainController::class, "home"]);
+Route::get('/contacts', [MainController::class, "contacts"]);
+Route::get('/new/contact', [MainController::class, "newContact"]);
