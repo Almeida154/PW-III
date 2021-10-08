@@ -183,6 +183,7 @@ a:not([class]) {
 }
 
 .contacts .contact {
+  position: relative;
   background-color: #1e1e1e38;
   margin-bottom: 10px;
   color: #f6f6f6;
@@ -216,6 +217,28 @@ a:not([class]) {
 
 .contacts .contact .content h6 {
   opacity: 0.3;
+}
+
+.contacts .contact .actions {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 100%;
+}
+
+.contacts .contact .actions ion-icon {
+  font-size: 1.4rem;
+  color: #a53030;
 }
 
 @media (max-width: 525px) {
@@ -277,5 +300,42 @@ body {
 
 .main__inside {
   padding: 32px;
+}
+
+/* Alert */
+.swal2-timer-progress-bar {
+  background-color: #2b2b2b;
+}
+
+.swal2-icon {
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
+.swal2-popup {
+  background-color: #3d3d3d !important;
+  -webkit-box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.36) !important;
+  box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.36) !important;
+}
+
+.swal2-icon.swal2-success [class^="swal2-success-line"],
+.swal2-popup.swal2-toast .swal2-success {
+  background-color: #2b2b2b !important;
+  border-color: #2b2b2b !important;
+}
+
+.swal2-icon.swal2-error [class^="swal2-x-mark-line"],
+.swal2-popup.swal2-toast .swal2-error {
+  border-color: #8c2f39 !important;
+}
+
+.swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
+  background-color: #8c2f39 !important;
+}
+
+.swal2-title {
+  font-size: 20px;
+  margin: 8px !important;
+  color: #2b2b2b !important;
 }
 /*# sourceMappingURL=main.css.map */

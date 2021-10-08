@@ -26,7 +26,7 @@
     <main class="main home">
         <div class="main__inside">
             <div class="status">
-                <h3>Você tem 3 contatos</h3>
+                <h3>Você tem {{$count}} contatos</h3>
             </div>
             <div class="content">
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id at reiciendis tempore. Culpa ducimus explicabo vitae, dicta nisi nihil. Ab ad numquam inventore aliquid fugit magni perspiciatis temporibus voluptatem autem?</p>

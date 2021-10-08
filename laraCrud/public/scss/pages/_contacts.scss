@@ -13,6 +13,7 @@
     }
 
     .contact {
+        position: relative;
         background-color: #1e1e1e38;
         margin-bottom: 10px;
         color: #f6f6f6;
@@ -36,6 +37,22 @@
 
             h6 {
                 opacity: 0.3;
+            }
+        }
+
+        .actions {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 100%;
+
+            ion-icon {
+                font-size: 1.4rem;
+                color: #a53030;
             }
         }
     }

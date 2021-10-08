@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/scss/main.css">
     <title>Contacts</title>
 </head>
@@ -25,10 +26,11 @@
 
     <main class="main">
         <div class="main__inside">
-            <form>
+            <form id="createContactForm" name="createContactForm">
+                @csrf
                 <h3>New contact</h3>
-                <input type="text" placeholder="Name" name="name">
-                <input type="text" placeholder="Number" name="number">
+                <input type="text" placeholder="Name" name="cnttname">
+                <input type="text" placeholder="Number" name="cnttnumber" id="phoneMask">
                 <input type="submit">
             </form>
         </div>
@@ -46,5 +48,10 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/jquery.mask.js"></script>
+    <script src="/js/create.js"></script>
 </body>
 </html>

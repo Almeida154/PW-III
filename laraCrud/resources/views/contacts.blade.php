@@ -27,17 +27,20 @@
         <div class="main__inside">
             <div class="contacts">
                 <h3>Contacts</h3>
-                @for ($i = 0; $i < 3; $i++)    
+                @foreach ($contacts as $contact)    
                     <div class="contact">
                         <div class="photo">
-                            <h5>N</h5>
+                            <h5>{{strtoupper(substr($contact->name, 0, 1))}}</h5>
                         </div>
                         <div class="content">
-                            <h4>Nome</h4>
-                            <h6>11957648755</h6>
+                            <h4>{{$contact->name}}</h4>
+                            <h6>{{$contact->number}}</h6>
+                        </div>
+                        <div class="actions">
+                            <ion-icon key={{$contact->id}} name="trash-outline" class="deleteIcon"></ion-icon>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </main>
@@ -54,5 +57,7 @@
             </div>
         </div>
     </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="/js/delete.js"></script>
 </body>
 </html>
