@@ -8,42 +8,48 @@
     <title>Home</title>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h3>Lara<span>CRUD</span></h3>
-        </div>
-        <nav>
-            <ul>
-                <li><a class="active" href="home">Home</a></li>
-                <li><a href="contacts">Contacts</a></li>
-                <li><a href="new/contact">New Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <div class="status">
-            <h3>Você tem 3 contatos</h3>
-        </div>
-        <div class="content">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id at reiciendis tempore. Culpa ducimus explicabo vitae, dicta nisi nihil. Ab ad numquam inventore aliquid fugit magni perspiciatis temporibus voluptatem autem?</p>
-        </div>
-        <div class="content">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id at reiciendis tempore. Culpa ducimus explicabo vitae, dicta nisi nihil. Ab ad numquam inventore aliquid fugit magni perspiciatis temporibus voluptatem autem?</p>
-        </div>
-        <div class="content">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id at reiciendis tempore. Culpa ducimus explicabo vitae, dicta nisi nihil. Ab ad numquam inventore aliquid fugit magni perspiciatis temporibus voluptatem autem?</p>
-        </div>
-    </main>
-
-    <footer>
-        <div class="content">
+    <header class="header">
+        <div class="header__inside">
             <div class="logo">
                 <h3>Lara<span>CRUD</span></h3>
             </div>
+            <nav>
+                <ul>
+                    <li><a class="active" href="http://localhost:8000/home">Home</a></li>
+                    <li><a href="http://localhost:8000/contacts">Contacts</a></li>
+                    <li><a href="http://localhost:8000/new/contact">New Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="credits">
-            <h4>By David Almeida</h4>
+    </header>
+
+    <main class="main home">
+        <div class="main__inside">
+            <div class="status">
+                <h3>Você tem 3 contatos</h3>
+            </div>
+            <div class="content">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id at reiciendis tempore. Culpa ducimus explicabo vitae, dicta nisi nihil. Ab ad numquam inventore aliquid fugit magni perspiciatis temporibus voluptatem autem?</p>
+            </div>
+            <div class="content">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id at reiciendis tempore. Culpa ducimus explicabo vitae, dicta nisi nihil. Ab ad numquam inventore aliquid fugit magni perspiciatis temporibus voluptatem autem?</p>
+            </div>
+            <div class="content">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id at reiciendis tempore. Culpa ducimus explicabo vitae, dicta nisi nihil. Ab ad numquam inventore aliquid fugit magni perspiciatis temporibus voluptatem autem?</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inside">
+            <div class="content">
+                <div class="logo">
+                    <h3>Lara<span>CRUD</span></h3>
+                </div>
+            </div>
+            <div class="credits">
+                <h4>By David Almeida</h4>
+            </div>
         </div>
     </footer>
 </body>

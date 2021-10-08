@@ -10,23 +10,15 @@
 
 a {
     text-decoration: none;
+    color: #f6f6f6;
+    opacity: 0.7;
+    transition: 0.3s;
 }
-a:visited {
-    text-decoration: none;
-    color: #000;
+a.active {
+    opacity: 1;
 }
 a:hover {
-    text-decoration: none;
-    color: #000;
-}
-a:focus {
-    text-decoration: none;
-    color: #000;
-}
-a:hover,
-a:active {
-    text-decoration: none;
-    color: #000;
+    opacity: 1;
 }
 
 body {

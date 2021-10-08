@@ -1,0 +1,41 @@
+.contacts {
+    margin: 0 auto;
+    padding: 60px;
+    background-color: #1e1e1e38;
+    width: 600px;
+    max-width: 100%;
+
+    h3 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+        color: #f6f6f6;
+    }
+
+    .contact {
+        background-color: #1e1e1e38;
+        margin-bottom: 10px;
+        color: #f6f6f6;
+        display: flex;
+
+        .photo {
+            background-color: #1e1e1e38;
+            width: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            h5 {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+        }
+
+        .content {
+            padding: 14px;
+
+            h6 {
+                opacity: 0.3;
+            }
+        }
+    }
+}
