@@ -69,6 +69,8 @@ a:not([class]) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .header__inside nav ul {
@@ -77,6 +79,22 @@ a:not([class]) {
   display: -ms-flexbox;
   display: flex;
   gap: 20px;
+}
+
+@media (max-width: 525px) {
+  .header__inside {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 16px 32px;
+  }
+}
+
+@media (max-width: 525px) {
+  .header {
+    height: auto;
+  }
 }
 
 .footer {
@@ -150,10 +168,12 @@ a:not([class]) {
 
 .contacts {
   margin: 0 auto;
-  padding: 60px;
+  padding: 64px;
   background-color: #1e1e1e38;
   width: 600px;
   max-width: 100%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .contacts h3 {
@@ -198,9 +218,15 @@ a:not([class]) {
   opacity: 0.3;
 }
 
+@media (max-width: 525px) {
+  .contacts {
+    padding: 32px;
+  }
+}
+
 form {
   margin: 0 auto;
-  padding: 60px;
+  padding: 64px;
   width: 600px;
   max-width: 100%;
   background-color: #1e1e1e38;
@@ -222,6 +248,12 @@ form input {
   padding: 0 10px;
   color: #f6f6f6;
   font-weight: bold;
+}
+
+@media (max-width: 525px) {
+  form {
+    padding: 32px;
+  }
 }
 
 body {

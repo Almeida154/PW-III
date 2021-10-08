@@ -1,6 +1,6 @@
 form {
     margin: 0 auto;
-    padding: 60px;
+    padding: 64px;
     width: 600px;
     max-width: 100%;
     background-color: #1e1e1e38;
@@ -21,5 +21,9 @@ form {
         padding: 0 10px;
         color: #f6f6f6;
         font-weight: bold;
+    }
+
+    @media (max-width: 525px) {
+        padding: 32px;
     }
 }

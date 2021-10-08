@@ -1,9 +1,10 @@
 .contacts {
     margin: 0 auto;
-    padding: 60px;
+    padding: 64px;
     background-color: #1e1e1e38;
     width: 600px;
     max-width: 100%;
+    transition: 0.3s;
 
     h3 {
         margin-bottom: 20px;
@@ -37,5 +38,9 @@
                 opacity: 0.3;
             }
         }
+    }
+
+    @media (max-width: 525px) {
+        padding: 32px;
     }
 }
